@@ -3,40 +3,35 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const pillars = [
+  { num: '01', title: 'ENTREPRENEUR', desc: 'Building structures that outlast effort.' },
+  { num: '02', title: 'AI SYSTEMS', desc: 'Usable intelligence, integrated at the core.' },
+  { num: '03', title: 'PERFORMANCE', desc: 'Data-driven growth, uncompromising ROI.' },
+];
+
 export const HeroSection: React.FC = () => {
   return (
     <section className="relative flex h-screen w-full flex-col overflow-hidden bg-black">
-      {/* Giant Typography Frame */}
-      <div className="pointer-events-none absolute inset-0 z-20 flex items-start justify-between px-6 pt-24 md:px-12">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col"
-        >
-          <span className="text-[15vw] font-black leading-[0.8] tracking-tighter text-white md:text-[12vw]">
-            MATT
-          </span>
-          <span className="mt-2 text-[10px] font-medium uppercase tracking-[0.4em] text-white/50 md:text-xs">
-            Strategic Systems
-          </span>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col items-end"
-        >
-          <span className="text-[15vw] font-black leading-[0.8] tracking-tighter text-white md:text-[12vw]">
-            AI
-          </span>
-          <span className="mt-2 text-[10px] font-medium uppercase tracking-[0.4em] text-accent md:text-xs">
-            Systems Builder
-          </span>
-        </motion.div>
-      </div>
-
       {/* Video Avatar - Center */}
       <div className="absolute inset-0 z-10 flex items-center justify-center">
         <video
@@ -44,67 +39,89 @@ export const HeroSection: React.FC = () => {
           loop
           muted
           playsInline
-          className="h-[90%] w-auto max-w-none object-contain mix-blend-screen"
+          className="h-[85%] w-auto max-w-none object-contain mix-blend-screen opacity-90"
         >
-          <source src="/VIDEO MATT 1.mp4" type="video/mp4" />
+          <source src="/VIDEO MATT 2.mp4" type="video/mp4" />
         </video>
       </div>
 
-      {/* Bottom Left - Expertise Tags */}
+      {/* Subtle purple glow behind avatar */}
+      <div className="absolute left-1/2 top-1/2 z-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/8 blur-[150px]" />
+
+      {/* Main Content Frame */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute bottom-8 left-6 z-30 flex flex-col gap-1 md:left-12"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="pointer-events-none absolute inset-0 z-20 flex flex-col justify-between p-6 md:p-10 lg:p-14"
       >
-        <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-white/70">
-          Performance Marketing
-        </span>
-        <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-white/70">
-          AI Integration
-        </span>
-        <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-accent">
-          Funnels & Systems
-        </span>
+        {/* Top Section */}
+        <div className="flex items-start justify-between">
+          {/* Name - Left */}
+          <motion.div variants={itemVariants} className="flex flex-col">
+            <span className="text-[18vw] font-black leading-[0.75] tracking-tighter text-white md:text-[14vw] lg:text-[12vw]">
+              MATTEO
+            </span>
+          </motion.div>
+
+          {/* Top Right - Identity Tag */}
+          <motion.div variants={itemVariants} className="flex flex-col items-end pt-2 md:pt-4">
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent md:text-xs">
+              Strategic Operator
+            </span>
+            <span className="mt-1 text-[9px] uppercase tracking-[0.2em] text-white/40 md:text-[10px]">
+              Milano, Italy
+            </span>
+          </motion.div>
+        </div>
+
+        {/* Bottom Section */}
+        <div className="flex items-end justify-between">
+          {/* Bottom Left - Three Pillars */}
+          <motion.div variants={itemVariants} className="flex flex-col gap-5 max-w-[280px] md:max-w-xs">
+            {pillars.map((pillar) => (
+              <div key={pillar.num} className="group flex flex-col gap-1">
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-[10px] text-accent">{pillar.num}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/80 md:text-[11px]">
+                    {pillar.title}
+                  </span>
+                </div>
+                <p className="text-[10px] leading-relaxed text-white/40 md:text-[11px]">
+                  {pillar.desc}
+                </p>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Surname - Right */}
+          <motion.div variants={itemVariants} className="flex flex-col items-end">
+            <span className="text-[18vw] font-black leading-[0.75] tracking-tighter text-white md:text-[14vw] lg:text-[12vw]">
+              ARNABOLDI
+            </span>
+          </motion.div>
+        </div>
       </motion.div>
 
-      {/* Bottom Center - Scroll */}
+      {/* Center - Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.8 }}
-        className="absolute bottom-8 left-1/2 z-30 -translate-x-1/2 flex flex-col items-center gap-2"
+        transition={{ duration: 1, delay: 1.2 }}
+        className="absolute bottom-6 left-1/2 z-30 -translate-x-1/2 flex flex-col items-center gap-2 md:bottom-10"
       >
-        <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-white/40">
-          Scroll Down
+        <span className="text-[9px] font-medium uppercase tracking-[0.4em] text-white/30">
+          Scroll
         </span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-          className="h-6 w-[1px] bg-gradient-to-b from-white/40 to-transparent"
+          className="h-5 w-[1px] bg-gradient-to-b from-accent/60 to-transparent"
         />
       </motion.div>
 
-      {/* Bottom Right - Year & Location */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute bottom-8 right-6 z-30 flex flex-col items-end gap-1 md:right-12"
-      >
-        <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-white/40">
-          45.4642° N, 9.1900° E
-        </span>
-        <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-white/70">
-          Milano, Italy
-        </span>
-        <span className="font-mono text-2xl font-light text-white/20">
-          2026
-        </span>
-      </motion.div>
-
-      {/* Subtle purple glow behind avatar */}
-      <div className="absolute left-1/2 top-1/2 z-0 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/10 blur-[150px]" />
+      {/* Bottom accent line */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
     </section>
   );
 };
