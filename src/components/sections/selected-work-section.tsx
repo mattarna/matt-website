@@ -136,8 +136,8 @@ export const SelectedWorkSection: React.FC = () => {
                   <div className="flex flex-col gap-1 md:gap-2">
                     <div className="flex flex-wrap items-center gap-3 md:gap-4">
                       <h3 className={`text-2xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter transition-all duration-500 ${
-                        hoveredProject === project.id ? 'text-white' : 'text-white/20 md:text-white/20'
-                      } text-white/80 md:text-white/20`}>
+                        hoveredProject === project.id ? 'text-white' : 'text-white/20'
+                      }`}>
                         {project.title}
                       </h3>
                       
