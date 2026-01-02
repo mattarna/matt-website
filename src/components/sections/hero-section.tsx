@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useTransition } from 'react';
+import React, { useTransition, useRef, useEffect } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
@@ -40,6 +40,40 @@ export const HeroSection: React.FC = () => {
   const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations('hero');
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Forza il play al montaggio per garantire l'autoplay su mobile
+    const playVideo = () => {
+      if (videoRef.current) {
+        // Assicuriamoci che sia mutato (requisito per autoplay)
+        videoRef.current.muted = true;
+        videoRef.current.play().catch(error => {
+          console.log("Autoplay prevented:", error);
+        });
+      }
+    };
+
+    playVideo();
+    
+    // Riprova dopo un breve ritardo e anche al click ovunque (user gesture)
+    const timeoutId = setTimeout(playVideo, 1000);
+    
+    const handleGesture = () => {
+      playVideo();
+      document.removeEventListener('touchstart', handleGesture);
+      document.removeEventListener('mousedown', handleGesture);
+    };
+
+    document.addEventListener('touchstart', handleGesture);
+    document.addEventListener('mousedown', handleGesture);
+
+    return () => {
+      clearTimeout(timeoutId);
+      document.removeEventListener('touchstart', handleGesture);
+      document.removeEventListener('mousedown', handleGesture);
+    };
+  }, []);
 
   const switchLocale = (newLocale: string) => {
     if (newLocale === locale) return;
@@ -92,12 +126,14 @@ export const HeroSection: React.FC = () => {
           className="relative w-full h-full flex items-center justify-center"
         >
           <video
+            ref={videoRef}
             autoPlay
             loop
             muted
             playsInline
             preload="auto"
             className="h-[70vh] md:h-[95vh] w-auto max-w-none object-contain mix-blend-screen opacity-90"
+            style={{ WebkitPlaysInline: true } as any}
           >
             <source src="/video-matt-2.mp4" type="video/mp4" />
           </video>
