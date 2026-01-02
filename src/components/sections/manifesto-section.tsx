@@ -35,11 +35,11 @@ export const ManifestoSection: React.FC = () => {
         </div>
         
         {/* Darkening Overlay */}
-        <div className="absolute inset-0 bg-black/60 z-[1]" />
+        <div className="absolute inset-0 bg-black/60 md:bg-black/40 z-[1]" />
         
         {/* Gradient Overlays for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent md:from-black/80 md:via-black/50 z-[2]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40 z-[2]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent md:from-black/70 md:via-black/40 md:to-transparent z-[2]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40 md:from-black/60 md:to-black/20 z-[2]" />
       </div>
 
       {/* CONTENT */}
