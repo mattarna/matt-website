@@ -52,13 +52,13 @@ export const LogoSection: React.FC = () => {
           className="flex items-center gap-24 md:gap-40 lg:gap-56 whitespace-nowrap px-12"
           animate={{ x: ["0%", "-50%"] }}
           transition={{ 
-            duration: 40,
+            duration: 80,
             repeat: Infinity, 
             ease: "linear",
           }}
         >
           {doubledLogos.map((logo, index) => {
-            const isSpecialLogo = logo.includes('(5)') || logo.includes('(7)');
+            const isSpecialLogo = logo.includes('-5.') || logo.includes('-7.');
             
             return (
               <div key={index} className="flex-shrink-0 flex items-center justify-center transition-all duration-700 hover:scale-110">
@@ -69,7 +69,7 @@ export const LogoSection: React.FC = () => {
                     fill
                     className={`object-contain transition-opacity ${
                       isSpecialLogo 
-                        ? 'brightness-150 contrast-125 grayscale' 
+                        ? 'brightness-125 contrast-125 saturate-150' 
                         : 'brightness-0 invert opacity-80 hover:opacity-100'
                     }`}
                     sizes="(max-width: 768px) 200px, (max-width: 1024px) 300px, 400px"
