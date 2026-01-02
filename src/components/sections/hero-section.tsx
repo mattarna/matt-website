@@ -91,34 +91,15 @@ export const HeroSection: React.FC = () => {
           transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] as any, delay: 0.2 }}
           className="relative w-full h-full flex items-center justify-center"
         >
-          {/* Desktop Video with mix-blend-screen */}
           <video
             autoPlay
             loop
             muted
             playsInline
             preload="auto"
-            className="hidden md:block h-[95vh] w-auto max-w-none object-contain mix-blend-screen opacity-90"
+            className="h-[70vh] md:h-[95vh] w-auto max-w-none object-contain mix-blend-screen opacity-90"
           >
-            <source src="/VIDEO MATT 2.mp4" type="video/mp4" />
-          </video>
-          
-          {/* Mobile Video without mix-blend (more compatible) */}
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            webkit-playsinline="true"
-            className="block md:hidden h-[70vh] w-auto max-w-none object-contain opacity-90"
-            style={{ 
-              mixBlendMode: 'screen',
-              WebkitBackfaceVisibility: 'hidden',
-              backfaceVisibility: 'hidden'
-            }}
-          >
-            <source src="/VIDEO MATT 2.mp4" type="video/mp4" />
+            <source src="/video-matt-2.mp4" type="video/mp4" />
           </video>
         </motion.div>
       </div>
