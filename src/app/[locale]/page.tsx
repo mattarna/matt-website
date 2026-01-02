@@ -9,6 +9,8 @@ import { CTASection } from '@/components/sections/cta-section';
 import React from 'react';
 import { getTranslations } from 'next-intl/server';
 
+import { StrategicFormula } from '@/components/sections/strategic-formula';
+
 interface HomeProps {
   params: Promise<{ locale: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -47,6 +49,7 @@ export default async function Home({ params }: HomeProps) {
         <HeroSection />
         <PrinciplesSection />
         <ExpertiseSection />
+        <StrategicFormula />
         <LogoSection />
         <SelectedWorkSection />
         <ManifestoSection />
