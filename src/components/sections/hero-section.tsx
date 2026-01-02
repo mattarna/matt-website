@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useTransition } from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -16,7 +16,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20, filter: 'blur(10px)' },
   visible: {
     opacity: 1,
@@ -26,7 +26,7 @@ const itemVariants = {
   },
 };
 
-const glowVariants = {
+const glowVariants: Variants = {
   hidden: { opacity: 0, scale: 0.8 },
   visible: {
     opacity: 1,
@@ -79,7 +79,7 @@ export const HeroSection: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] as any, delay: 0.2 }}
           className="relative w-full h-full flex items-center justify-center"
         >
           <video
@@ -218,13 +218,13 @@ export const HeroSection: React.FC = () => {
       <motion.div 
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
-        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] as any }}
         className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent z-30" 
       />
       <motion.div 
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
-        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] as any, delay: 0.2 }}
         className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent z-30" 
       />
     </section>

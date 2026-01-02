@@ -108,7 +108,7 @@ export const Header: React.FC = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as any }}
               className="hidden md:flex fixed top-6 left-1/2 -translate-x-1/2 z-[200] w-auto"
             >
               <div className="relative flex items-center justify-start gap-3 px-4 py-3 bg-white/[0.08] backdrop-blur-xl border border-white/15 rounded-full shadow-2xl">

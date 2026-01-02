@@ -51,7 +51,7 @@ export const ManifestoSection: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as any }}
           >
             <p className="text-lg md:text-2xl lg:text-3xl font-bold text-white uppercase tracking-wide leading-relaxed mb-10 md:mb-12">
               {t('intro1')}

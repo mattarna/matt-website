@@ -124,7 +124,7 @@ export const ExpertiseSection: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
               className="flex flex-col gap-10"
             >
               <div className="relative w-full aspect-square rounded-sm overflow-hidden border border-white/10 shadow-2xl">
@@ -179,7 +179,7 @@ export const ExpertiseSection: React.FC = () => {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: false, margin: "-10%" }}
-                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
                 >
                   <div className="flex items-center gap-4 mb-6">
                     <span className="font-mono text-sm font-bold text-white/40 tracking-widest">

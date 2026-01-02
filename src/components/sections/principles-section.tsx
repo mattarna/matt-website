@@ -89,13 +89,13 @@ export const PrinciplesSection: React.FC = () => {
         </div>
 
         {/* Midas Touch - Symmetrical & Clean */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-24 md:mt-56 max-w-4xl border-l border-accent/30 pl-6 md:pl-16 group"
-        >
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as any }}
+            className="mt-24 md:mt-56 max-w-4xl border-l border-accent/30 pl-6 md:pl-16 group"
+          >
           <span className="font-mono text-[10px] md:text-sm uppercase tracking-[0.4em] md:tracking-[0.6em] text-accent/60 mb-6 md:mb-8 block transition-colors group-hover:text-accent font-bold">
             {t('commitmentLabel')}
           </span>

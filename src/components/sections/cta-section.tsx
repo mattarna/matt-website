@@ -32,7 +32,7 @@ export const CTASection: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as any }}
             className="mb-10 md:mb-16"
           >
             <p className="text-lg md:text-2xl lg:text-3xl text-white/40 font-light leading-relaxed tracking-tight max-w-4xl mx-auto italic">
@@ -51,7 +51,7 @@ export const CTASection: React.FC = () => {
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ delay: 0.2, duration: 1.2, ease: [0.16, 1, 0.3, 1] as any }}
             className="mb-12 md:mb-20"
           >
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tighter leading-[0.85] mb-8 md:mb-12 drop-shadow-2xl">
