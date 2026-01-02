@@ -271,5 +271,13 @@
     "log3": "Shredding \"clarity\" systems...",
     "log4": "Dumping espresso into the void...",
     "log5": "TOTAL WIPEOUT DETECTED"
+  },
+  "cookieBanner": {
+    "label": "Data Protocol",
+    "title": "Cookies & Systems",
+    "description": "We use cookies to analyze traffic and optimize your experience. No invasive tracking, just data for better systems.",
+    "policyLink": "Read the policy.",
+    "accept": "Accept all",
+    "decline": "Necessary only"
   }
 }

@@ -11,6 +11,7 @@ import { SilentNavigation } from '@/components/layout/silent-navigation';
 import { FilmGrain } from '@/components/ui/film-grain';
 import { Header } from '@/components/layout/header';
 import { CustomCursor } from '@/components/ui/custom-cursor';
+import { CookieBanner } from '@/components/ui/cookie-banner';
 import { Metadata } from 'next';
 
 const syne = Syne({
@@ -155,6 +156,7 @@ export default async function LocaleLayout({
               {children}
             </main>
             <Footer />
+            <CookieBanner />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

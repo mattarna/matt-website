@@ -271,5 +271,13 @@
     "log3": "Distruzione sistemi \"chiarezza\"...",
     "log4": "Scaricamento espresso nel vuoto...",
     "log5": "TOTAL WIPEOUT DETECTED"
+  },
+  "cookieBanner": {
+    "label": "Data Protocol",
+    "title": "Cookies & Systems",
+    "description": "Utilizziamo i cookie per analizzare il traffico e ottimizzare la tua esperienza. Nessun tracciamento invasivo, solo dati per sistemi migliori.",
+    "policyLink": "Leggi la policy.",
+    "accept": "Accetta tutto",
+    "decline": "Solo necessari"
   }
 }
