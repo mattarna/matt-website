@@ -48,9 +48,9 @@ export async function generateMetadata({
       apple: '/logo matteo.png',
     },
     alternates: {
-      canonical: `/${locale}`,
+      canonical: locale === 'it' ? '/' : `/${locale}`,
       languages: {
-        'it-IT': '/it',
+        'it-IT': '/',
         'en-US': '/en',
       },
     },

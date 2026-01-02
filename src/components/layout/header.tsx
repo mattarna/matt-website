@@ -26,8 +26,17 @@ export const Header: React.FC = () => {
     if (newLocale === locale) return;
     
     startTransition(() => {
-      const currentPath = pathname.replace(`/${locale}`, '') || '/';
-      window.location.href = `/${newLocale}${currentPath === '/' ? '' : currentPath}`;
+      // Get current path without the current locale prefix
+      const pathWithoutLocale = pathname.startsWith(`/${locale}`) 
+        ? pathname.replace(`/${locale}`, '') || '/' 
+        : pathname;
+      
+      // Build new URL: Italian at root (/), English at /en
+      const newPath = newLocale === 'it' 
+        ? (pathWithoutLocale === '/' ? '/' : pathWithoutLocale)
+        : `/${newLocale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
+        
+      window.location.href = newPath;
     });
   };
 
