@@ -43,9 +43,9 @@ export async function generateMetadata({
     authors: [{ name: 'Matteo Arnaboldi' }],
     metadataBase: new URL(baseUrl),
     icons: {
-      icon: '/logo-matteo.png',
-      shortcut: '/logo-matteo.png',
-      apple: '/logo-matteo.png',
+      icon: [{ url: '/icon.png', type: 'image/png' }],
+      shortcut: '/icon.png',
+      apple: [{ url: '/apple-icon.png', type: 'image/png' }],
     },
     alternates: {
       canonical: locale === 'it' ? '/' : `/${locale}`,
