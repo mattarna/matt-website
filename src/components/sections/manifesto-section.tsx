@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export const ManifestoSection: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="manifesto" className="relative min-h-screen flex items-center overflow-hidden">
       
       {/* BACKGROUND IMAGE */}
       <div className="absolute inset-0 z-0">
@@ -30,26 +30,26 @@ export const ManifestoSection: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="text-lg md:text-xl lg:text-2xl font-bold text-white uppercase tracking-wide leading-relaxed mb-12">
+            <p className="text-xl md:text-2xl lg:text-3xl font-bold text-white uppercase tracking-wide leading-relaxed mb-12">
               I don&apos;t build for speed alone.
               <br />
               <span className="text-white/40">I build for what holds.</span>
             </p>
 
             <div className="space-y-8 mb-16">
-              <p className="text-base md:text-lg text-white/70 leading-relaxed">
+              <p className="text-lg md:text-xl text-white/70 leading-relaxed">
                 Most problems aren&apos;t solved by more tools or automation.
                 <br />
                 They&apos;re solved by <span className="text-white font-semibold">clarity</span>: seeing the system as it is, naming the trade-offs, and choosing a direction you can stand behind.
               </p>
 
-              <p className="text-base md:text-lg text-white/70 leading-relaxed">
+              <p className="text-lg md:text-xl text-white/70 leading-relaxed">
                 Clarity is not a soft skill. It&apos;s an <span className="text-white font-semibold">ethical act</span>.
                 <br />
                 Because unclear decisions create fragility, waste time, and quietly erode trust.
               </p>
 
-              <p className="text-base md:text-lg text-white/70 leading-relaxed">
+              <p className="text-lg md:text-xl text-white/70 leading-relaxed">
                 Technology matters only when it becomes <span className="text-white font-semibold">usable structure</span>.
                 <br />
                 Not novelty. Not performance theater.
@@ -57,7 +57,7 @@ export const ManifestoSection: React.FC = () => {
                 Structure that reduces load, strengthens execution, and elevates people.
               </p>
 
-              <p className="text-base md:text-lg text-white/70 leading-relaxed">
+              <p className="text-lg md:text-xl text-white/70 leading-relaxed">
                 I work like an <span className="text-white font-semibold">operator</span>, not a spectator.
                 <br />
                 Where complexity is real and consequences exist.
@@ -68,19 +68,19 @@ export const ManifestoSection: React.FC = () => {
 
             {/* KEY PRINCIPLES - Condensed */}
             <div className="border-l-2 border-white/20 pl-6 mb-16 space-y-3">
-              <p className="text-sm md:text-base text-white/50 uppercase tracking-wider font-bold">
+              <p className="text-base md:text-lg text-white/50 uppercase tracking-wider font-bold">
                 Growth without foundations is debt.
               </p>
-              <p className="text-sm md:text-base text-white/50 uppercase tracking-wider font-bold">
+              <p className="text-base md:text-lg text-white/50 uppercase tracking-wider font-bold">
                 Innovation without discipline is noise.
               </p>
-              <p className="text-sm md:text-base text-white/50 uppercase tracking-wider font-bold">
+              <p className="text-base md:text-lg text-white/50 uppercase tracking-wider font-bold">
                 Systems that don&apos;t respect humans eventually break.
               </p>
             </div>
 
             {/* CLOSING STATEMENT */}
-            <p className="text-base md:text-lg text-white/70 leading-relaxed mb-16">
+            <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-16">
               The real advantage today is not moving faster, but <span className="text-white font-semibold">deciding better</span>.
               <br />
               Building things that last.
@@ -96,13 +96,13 @@ export const ManifestoSection: React.FC = () => {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="pt-8 border-t border-white/10"
             >
-              <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-accent/80 mb-6 block">
+              <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-accent/80 mb-6 block font-bold">
                 The Commitment
               </span>
               <h3 className="text-2xl md:text-4xl lg:text-5xl font-black text-white uppercase tracking-tighter leading-tight">
                 The New Midas Touch
               </h3>
-              <p className="mt-4 text-lg md:text-xl text-white/60 italic">
+              <p className="mt-4 text-xl md:text-2xl text-white/60 italic">
                 &quot;Everything I touch should leave better than it was before.&quot;
               </p>
             </motion.div>
@@ -117,13 +117,13 @@ export const ManifestoSection: React.FC = () => {
             transition={{ delay: 0.5, duration: 1 }}
             className="mt-20 flex flex-col items-end gap-1"
           >
-            <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-white/30">
+            <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/30 font-bold">
               Strategic Systems
             </span>
-            <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-white/30">
+            <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/30 font-bold">
               AI Integration
             </span>
-            <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-white/30">
+            <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/30 font-bold">
               10+ Years Experience
             </span>
           </motion.div>

@@ -6,6 +6,10 @@ import { Syne, JetBrains_Mono } from 'next/font/google';
 import '../globals.css';
 import { Footer } from '@/components/layout/footer';
 import { ThemeProvider } from '@/components/theme-provider';
+import { PageLoader } from '@/components/ui/page-loader';
+import { SilentNavigation } from '@/components/layout/silent-navigation';
+import { FilmGrain } from '@/components/ui/film-grain';
+import { Header } from '@/components/layout/header';
 
 const syne = Syne({
   subsets: ['latin'],
@@ -37,6 +41,9 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${syne.variable} ${jetbrains.variable} font-sans antialiased min-h-screen flex flex-col bg-[#030712]`}>
+        <PageLoader />
+        <FilmGrain />
+        <SilentNavigation />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -44,6 +51,7 @@ export default async function LocaleLayout({
           disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages}>
+            <Header />
             <main className="flex-grow">
               {children}
             </main>

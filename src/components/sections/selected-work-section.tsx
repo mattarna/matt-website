@@ -8,7 +8,7 @@ const projects = [
     id: 'ai-espresso',
     title: 'AI Espresso',
     category: 'Newsletter & Community',
-    year: '2024',
+    year: '2025',
     status: 'active',
     highlight: '16th Fastest Growing Worldwide',
     metric: '6,000+ readers in 6 months',
@@ -23,7 +23,7 @@ Results: 16th fastest growing newsletter worldwide on Substack, with 6,000+ read
     id: 'morfeus',
     title: 'Morfeus',
     category: 'AI Consulting',
-    year: '2023',
+    year: '2024',
     status: 'active',
     highlight: 'AI Implementation for Enterprises',
     metric: 'Custom AI Agents',
@@ -49,7 +49,7 @@ Results: Ensures no email ends up in spam, recovers 30% more abandoned carts, an
     id: 'dsyre-school',
     title: 'DSYRE School',
     category: 'Education Platform',
-    year: '2022',
+    year: '2020',
     status: 'completed',
     highlight: 'Gamer Academy',
     metric: 'Warzone Masterplayer',
@@ -62,7 +62,7 @@ Given this past and my passion for the gaming world, together with our partner D
     id: 'lead-by-neo',
     title: 'Lead by Neo',
     category: 'AI Lead Generation',
-    year: '2023',
+    year: '2019',
     status: 'completed',
     highlight: 'AI-Powered Lead Generation',
     metric: 'High-Quality Appointments',
@@ -87,6 +87,7 @@ export const SelectedWorkSection: React.FC = () => {
 
   return (
     <section 
+      id="work"
       className="relative bg-[#050508] py-32 md:py-48 min-h-screen"
       onMouseMove={handleMouseMove}
     >
@@ -110,7 +111,7 @@ export const SelectedWorkSection: React.FC = () => {
         >
           <div className="flex items-center gap-4 mb-6">
             <div className="h-[1px] w-8 bg-accent/60" />
-            <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-accent/80">Portfolio</span>
+            <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-accent/80 font-bold">Portfolio</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-extrabold text-white tracking-tighter leading-tight uppercase">
             Selected Work
@@ -167,20 +168,22 @@ export const SelectedWorkSection: React.FC = () => {
                       )}
                     </div>
                     
-                    {/* Highlight on hover */}
-                    <motion.p 
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ 
-                        opacity: hoveredProject === project.id ? 1 : 0,
-                        height: hoveredProject === project.id ? 'auto' : 0
-                      }}
-                      transition={{ duration: 0.3 }}
-                      className={`text-sm md:text-base font-medium tracking-wide overflow-hidden ${
-                        project.status === 'active' ? 'text-emerald-400' : 'text-accent'
-                      }`}
-                    >
-                      {project.highlight}
-                    </motion.p>
+                {/* Highlight on hover */}
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ 
+                    opacity: hoveredProject === project.id ? 1 : 0,
+                    height: hoveredProject === project.id ? 'auto' : 0
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-hidden"
+                >
+                  <p className={`text-sm md:text-base font-medium tracking-wide ${
+                    project.status === 'active' ? 'text-emerald-400' : 'text-accent'
+                  }`}>
+                    {project.highlight}
+                  </p>
+                </motion.div>
                   </div>
                 </div>
 
@@ -246,7 +249,7 @@ export const SelectedWorkSection: React.FC = () => {
                 
                 {/* Metric overlay */}
                 <div className="absolute bottom-4 left-4 right-4">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/60">
+                  <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/60 font-bold">
                     {activeProject.metric}
                   </span>
                 </div>
@@ -341,7 +344,7 @@ export const SelectedWorkSection: React.FC = () => {
 
                 {/* Highlight */}
                 <div className="mt-12 pt-8 border-t border-white/10">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-white/30 mb-4 block">Key Result</span>
+                  <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/30 mb-4 block font-bold">Key Result</span>
                   <p className={`text-2xl md:text-3xl font-bold tracking-tight ${
                     openProject.status === 'active' ? 'text-emerald-400' : 'text-accent'
                   }`}>

@@ -103,7 +103,7 @@ export const ExpertiseSection: React.FC = () => {
   });
 
   return (
-    <section ref={containerRef} className="relative bg-[#354BB5] py-24 md:py-32">
+    <section id="expertise" ref={containerRef} className="relative bg-[#354BB5] py-24 md:py-32">
       {/* Grid Background Overlay */}
       <div 
         className="absolute inset-0 z-0 pointer-events-none opacity-[0.08]" 
@@ -124,7 +124,7 @@ export const ExpertiseSection: React.FC = () => {
         >
           <div className="flex items-center gap-4 mb-6">
              <div className="h-[1px] w-8 bg-white/40" />
-             <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-white/80">Operating Model</span>
+             <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/80 font-bold">Operating Model</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-extrabold text-white tracking-tighter leading-tight uppercase">
             Strategic Operating Model

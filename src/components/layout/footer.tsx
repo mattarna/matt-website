@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from '@/i18n/routing';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -57,7 +58,7 @@ export const Footer: React.FC = () => {
             
             {/* Contacts */}
             <div className="flex flex-col gap-6">
-              <span className="text-[10px] uppercase tracking-[0.4em] text-white/60">Direct</span>
+              <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/60 font-bold">Direct</span>
               <a href="mailto:hello@morfeushub.com" className="text-white text-lg font-bold hover:text-white/70 transition-opacity">hello@morfeushub.com</a>
               <div className="flex flex-col gap-3">
                 <a href="https://linkedin.com/in/marnaboldi" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors text-sm uppercase tracking-widest font-medium">LinkedIn</a>
@@ -68,7 +69,7 @@ export const Footer: React.FC = () => {
 
             {/* Location */}
             <div className="flex flex-col gap-6">
-              <span className="text-[10px] uppercase tracking-[0.4em] text-white/60">Base</span>
+              <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/60 font-bold">Base</span>
               <p className="text-white/90 text-base leading-relaxed">
                 45.4642° N, 9.1900° E<br />
                 Milano, Italy
@@ -77,7 +78,7 @@ export const Footer: React.FC = () => {
 
             {/* Status */}
             <div className="flex flex-col gap-6">
-              <span className="text-[10px] uppercase tracking-[0.4em] text-white/60">Operating Status</span>
+              <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/60 font-bold">Operating Status</span>
               <div className="flex items-center gap-3">
                 <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_10px_rgba(52,211,153,0.5)]" />
                 <span className="text-white font-bold text-sm uppercase tracking-widest">Currently Scaling</span>
@@ -86,14 +87,15 @@ export const Footer: React.FC = () => {
 
             {/* Funny Button / CTA */}
             <div className="flex flex-col md:items-end gap-6">
-              <span className="text-[10px] uppercase tracking-[0.4em] text-white/60">Don't Click This</span>
-              <motion.button 
-                whileTap={{ scale: 0.95 }}
-                onClick={() => alert("I told you not to click! Now go back to work and build some systems. ☕")}
-                className="px-6 py-3 border border-white/40 text-white/80 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-white hover:text-[#354BB5] transition-all duration-500"
-              >
-                Self-Destruct
-              </motion.button>
+              <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/60 font-bold">Don't Click This</span>
+              <Link href="/self-destruct">
+                <motion.div 
+                  whileTap={{ scale: 0.95 }}
+                  className="px-6 py-3 border border-white/40 text-white/80 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-white hover:text-[#354BB5] transition-all duration-500 cursor-pointer"
+                >
+                  Self-Destruct
+                </motion.div>
+              </Link>
             </div>
 
           </div>

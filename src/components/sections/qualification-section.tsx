@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export const QualificationSection: React.FC = () => {
   return (
-    <section className="relative bg-[#354BB5] py-32 md:py-48 overflow-hidden">
+    <section id="qualification" className="relative bg-[#354BB5] py-32 md:py-48 overflow-hidden">
       {/* Grid Background Overlay */}
       <div 
         className="absolute inset-0 z-0 pointer-events-none opacity-[0.08]" 
@@ -17,29 +17,31 @@ export const QualificationSection: React.FC = () => {
 
       <div className="container relative z-10 mx-auto px-8 md:px-16 lg:px-24">
         
-        {/* SECTION HEADER */}
+        {/* SECTION HEADER - Minimal & Authority */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="mb-20 md:mb-28 text-center"
         >
-          <span className="font-mono text-[10px] uppercase tracking-[0.6em] text-white/60 mb-6 block">
-            Engagement
+          <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/40 mb-6 block font-bold">
+            Engagement Qualification
           </span>
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tighter leading-none uppercase">
             Working With Me
           </h2>
         </motion.div>
 
-        {/* THE IDEAL CLIENT - Bold Statement */}
+        {/* THE IDEAL CLIENT - Balanced Statement */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 1.2, delay: 0.2 }}
           className="mb-24 md:mb-32"
         >
-          <p className="text-2xl md:text-4xl lg:text-5xl font-bold text-white/90 leading-tight tracking-tight text-center max-w-5xl mx-auto">
+          <p className="text-2xl md:text-4xl lg:text-5xl font-bold text-white/90 leading-tight tracking-tight text-center max-w-5xl mx-auto uppercase italic">
             Founders and leadership teams facing{' '}
             <span className="text-white underline decoration-white/30 underline-offset-8">real complexity</span>.
             <br className="hidden md:block" />
@@ -50,76 +52,62 @@ export const QualificationSection: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* THREE PILLARS - Horizontal Layout */}
+        {/* THREE PILLARS - Horizontal Layout with Hover Effects */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-24 md:mb-32">
           
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 md:p-10 rounded-sm"
-          >
-            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-6">
-              <span className="font-mono text-lg font-bold text-white/80">01</span>
-            </div>
-            <h4 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight mb-4">
-              Strategic Operator
-            </h4>
-            <p className="text-base text-white/50 leading-relaxed">
-              Working alongside founders in the room where decisions happen.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 md:p-10 rounded-sm"
-          >
-            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-6">
-              <span className="font-mono text-lg font-bold text-white/80">02</span>
-            </div>
-            <h4 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight mb-4">
-              System Designer
-            </h4>
-            <p className="text-base text-white/50 leading-relaxed">
-              Architecting growth, AI, and decision-making infrastructure.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 md:p-10 rounded-sm"
-          >
-            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-6">
-              <span className="font-mono text-lg font-bold text-white/80">03</span>
-            </div>
-            <h4 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight mb-4">
-              Force Multiplier
-            </h4>
-            <p className="text-base text-white/50 leading-relaxed">
-              High-leverage support during critical transformation phases.
-            </p>
-          </motion.div>
+          {[
+            { id: '01', title: 'Strategic Operator', desc: 'Working alongside founders in the room where decisions happen.' },
+            { id: '02', title: 'System Designer', desc: 'Architecting growth, AI, and decision-making infrastructure.' },
+            { id: '03', title: 'Force Multiplier', desc: 'High-leverage support during critical transformation phases.' }
+          ].map((pillar, i) => (
+            <motion.div
+              key={pillar.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 * i, duration: 0.8 }}
+              whileHover={{ y: -8 }}
+              className="group relative bg-white/5 backdrop-blur-sm border border-white/10 p-8 md:p-10 rounded-sm transition-all duration-500 hover:border-white/30"
+            >
+              {/* Subtle Glow Hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              
+              <div className="relative z-10">
+                <div className="w-12 h-12 rounded-full bg-white/10 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-white transition-all duration-500">
+                  <span className="font-mono text-lg font-bold text-white group-hover:text-[#354BB5]">
+                    {pillar.id}
+                  </span>
+                </div>
+                <h4 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight mb-4 leading-none">
+                  {pillar.title}
+                </h4>
+                <p className="text-base text-white/50 leading-relaxed group-hover:text-white/80 transition-colors">
+                  {pillar.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
 
         </div>
 
-        {/* THE FILTER - Subtle but Clear */}
+        {/* THE FILTER - Subtle & Clean */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
           className="text-center border-t border-white/10 pt-16 md:pt-20"
         >
           <p className="text-lg md:text-xl text-white/30 mb-8 italic">
             Not for those seeking shortcuts, trends, or execution without accountability.
           </p>
-          <p className="text-base md:text-lg text-white/50 font-medium">
+          <motion.div 
+            initial={{ width: 0 }}
+            whileInView={{ width: 64 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="h-[1px] bg-white/20 mx-auto mb-8"
+          />
+          <p className="text-base md:text-lg text-white/50 font-medium uppercase tracking-[0.4em]">
             If this resonates, you know where to find me.
           </p>
         </motion.div>
@@ -128,6 +116,7 @@ export const QualificationSection: React.FC = () => {
 
       {/* Frame borders */}
       <div className="absolute inset-x-0 top-0 h-px bg-white/10 z-30" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-white/10 z-30" />
     </section>
   );
 };

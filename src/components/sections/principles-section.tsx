@@ -20,28 +20,21 @@ interface PrincipleItemProps {
 const PrincipleItem: React.FC<PrincipleItemProps> = ({ text, index }) => {
   const ref = React.useRef<HTMLDivElement>(null);
   
-  // margin: "100% 0px -50% 0px" 
-  // - 100% top: include everything above the viewport (keep it white)
-  // - -50% bottom: activate only when passing the middle of the screen
   const isActive = useInView(ref, { 
     margin: "100% 0px -50% 0px",
     once: false
   });
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={{ opacity: 0, y: 15 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-5%" }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="py-8 md:py-10"
+      className="py-10 md:py-14"
     >
-      <div className="flex items-center gap-8 md:gap-12">
-        {/* Number - Scaled down & Bold */}
+      <div className="flex items-center gap-8 md:gap-16">
+        {/* Number */}
         <div className="flex-shrink-0">
           <span 
-            className={`block text-2xl md:text-3xl font-extrabold tracking-tighter transition-all duration-700 ease-out leading-none ${
+            className={`block text-3xl md:text-5xl font-extrabold tracking-tighter transition-all duration-1000 ease-out leading-none ${
               isActive ? 'text-accent' : 'text-white/5'
             }`}
           >
@@ -49,42 +42,40 @@ const PrincipleItem: React.FC<PrincipleItemProps> = ({ text, index }) => {
           </span>
         </div>
 
-        {/* Text - Well compressed dimensions */}
+        {/* Text */}
         <p 
-          className={`text-lg md:text-2xl lg:text-3xl font-bold tracking-tight leading-tight transition-all duration-1000 ease-out ${
+          className={`text-xl md:text-3xl lg:text-4xl font-bold tracking-tight leading-tight transition-all duration-1000 ease-out ${
             isActive ? 'text-white' : 'text-white/10'
           }`}
         >
           {text}
         </p>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
 export const PrinciplesSection: React.FC = () => {
   return (
-    <section className="relative bg-[#050508] py-24 md:py-32">
+    <section id="principles" className="relative bg-[#050508] py-32 md:py-48 overflow-hidden">
+      {/* Background Accent Blur */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
+
       <div className="container px-8 md:px-16 lg:px-24">
         
         {/* Header - Minimal & Compact */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-20 md:mb-24"
-        >
-          <div className="flex items-center gap-4 mb-6">
-             <div className="h-[1px] w-8 bg-accent/60" />
-             <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-accent/80">Principles</span>
+        <div className="mb-24 md:mb-32">
+          <div className="flex items-center gap-4 mb-8">
+             <div className="h-px w-8 bg-accent/60" />
+             <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-accent/80 font-bold">Principles</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tighter leading-none uppercase">
+          <h2 className="text-4xl md:text-6xl font-extrabold text-white tracking-tighter leading-none uppercase">
             Operating Principles
           </h2>
-          <p className="mt-4 text-sm md:text-base text-white/30 max-w-sm leading-relaxed">
+          <p className="mt-6 text-base md:text-lg text-white/30 max-w-sm leading-relaxed">
             Not slogans. Filters for every decision I make.
           </p>
-        </motion.div>
+        </div>
 
         {/* Principles List - High compression */}
         <div className="divide-y divide-white/5 border-t border-white/5">
@@ -95,36 +86,37 @@ export const PrinciplesSection: React.FC = () => {
 
         {/* Midas Touch - Symmetrical & Clean */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-32 md:mt-40 max-w-4xl border-l border-accent/30 pl-8 md:pl-12"
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-40 md:mt-56 max-w-4xl border-l border-accent/30 pl-10 md:pl-16 group"
         >
-          <span className="font-mono text-[9px] uppercase tracking-[0.5em] text-accent/60 mb-6 block">
+          <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-accent/60 mb-8 block transition-colors group-hover:text-accent font-bold">
             The Commitment
           </span>
 
-          <p className="text-xl md:text-3xl lg:text-4xl font-bold text-white/80 leading-tight tracking-tight mb-10 italic">
-            "Everything I touch should leave <span className="text-white underline decoration-accent/30 decoration-2 underline-offset-4">better</span> than I found it."
+          <p className="text-2xl md:text-4xl lg:text-5xl font-bold text-white/80 leading-tight tracking-tight mb-12 italic transition-colors group-hover:text-white">
+            &quot;Everything I touch should leave <span className="text-white underline decoration-accent/30 decoration-2 underline-offset-8 group-hover:decoration-accent transition-all">better</span> than I found it.&quot;
           </p>
 
-          <div className="flex flex-col gap-2">
-            <h3 className="text-lg md:text-xl font-extrabold text-accent tracking-tight uppercase">
+          <div className="flex flex-col gap-4">
+            <h3 className="text-xl md:text-3xl font-extrabold text-accent tracking-tight uppercase">
               The New Midas Touch
             </h3>
-            <p className="text-sm md:text-base text-white/30 max-w-lg leading-relaxed">
+            <p className="text-sm md:text-xl text-white/30 max-w-xl leading-relaxed">
               An obsession with quality that turns potential into enduring value.
             </p>
           </div>
 
           {/* Signature - Discreet */}
-          <div className="mt-12 flex items-center gap-6">
+          <div className="mt-20 flex items-center gap-8">
             <div className="flex flex-col">
-              <span className="text-base font-bold tracking-tight text-white/60 uppercase">Matt Arnaboldi</span>
-              <span className="text-[9px] uppercase tracking-[0.3em] text-white/20">Founder & Operator</span>
+              <span className="text-lg font-bold tracking-tight text-white/60 uppercase">Matt Arnaboldi</span>
+              <span className="text-[10px] uppercase tracking-[0.3em] text-white/20">Founder & Operator</span>
             </div>
-            <div className="h-px w-8 bg-white/10" />
-            <span className="font-mono text-lg font-extralight text-white/5">2026</span>
+            <div className="h-px w-12 bg-white/10" />
+            <span className="font-mono text-xl font-extralight text-white/5">2026</span>
           </div>
         </motion.div>
 

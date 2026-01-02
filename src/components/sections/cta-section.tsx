@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export const CTASection: React.FC = () => {
   return (
-    <section className="relative bg-[#050508] py-32 md:py-48 lg:py-64 overflow-hidden">
+    <section id="contact" className="relative bg-[#050508] py-32 md:py-48 lg:py-64 overflow-hidden">
       {/* Grid Background Overlay */}
       <div 
         className="absolute inset-0 z-0 pointer-events-none opacity-[0.02]" 
@@ -15,8 +15,11 @@ export const CTASection: React.FC = () => {
         }} 
       />
 
-      {/* AMBIENT GLOW */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-radial from-[#354BB5]/10 to-transparent blur-[120px] pointer-events-none" />
+      {/* ATMOSPHERIC GRADIENT (PURPLE/BLUE) */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_#354BB5_0%,_#7c3aed_20%,_transparent_60%)] opacity-[0.2] blur-[120px]" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[800px] bg-gradient-radial from-[#354BB5]/25 to-transparent blur-[150px]" />
+      </div>
 
       <div className="container relative z-10 mx-auto px-8 md:px-16 lg:px-24">
         <div className="max-w-5xl mx-auto text-center">
@@ -26,93 +29,98 @@ export const CTASection: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="mb-12 md:mb-16"
           >
-            <p className="text-xl md:text-2xl lg:text-3xl text-white/40 font-light leading-relaxed tracking-tight max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl lg:text-3xl text-white/40 font-light leading-relaxed tracking-tight max-w-4xl mx-auto italic">
               I don&apos;t take on many personal projects. 
               <br className="hidden md:block" />
-              I typically engage through 1:1 mentorship, strategic consulting, or as a long-term operator for founders.
+              I typically engage through <span className="text-white/60">1:1 mentorship</span>, <span className="text-white/60">strategic consulting</span>, or as a <span className="text-white/60">long-term operator</span> for founders.
             </p>
           </motion.div>
 
           {/* MAIN CTA TEXT */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.8 }}
+            transition={{ delay: 0.2, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="mb-16 md:mb-24"
           >
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tighter leading-[0.9] mb-12">
-              If you&apos;re facing real complexity, <br />we can talk.
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tighter leading-[0.85] mb-12 drop-shadow-2xl">
+              Facing real<br />complexity?<br /><span className="italic">Let&apos;s talk.</span>
             </h2>
           </motion.div>
 
           {/* BUTTONS GROUP */}
-          <div className="flex flex-col items-center gap-16">
+          <div className="flex flex-col items-center gap-24">
             
             {/* PRIMARY CTA */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-            >
-              <a 
-                href="mailto:ciao@matteoarnaboldi.com"
-                className="inline-flex items-center gap-6 px-12 py-6 bg-white text-black font-bold uppercase tracking-[0.2em] text-sm md:text-base hover:bg-[#354BB5] hover:text-white transition-all duration-500 rounded-sm shadow-[0_0_40px_-10px_rgba(255,255,255,0.2)]"
-              >
-                Start a conversation
-                <span className="text-xl">→</span>
-              </a>
-            </motion.div>
-
-            {/* SECONDARY CTAs - REDESIGNED WITH GRADIENT CARDS */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl mx-auto"
+              transition={{ delay: 0.4, duration: 0.8 }}
+            >
+              <motion.a 
+                href="mailto:hello@morfeushub.com"
+                whileHover={{ scale: 1.05, boxShadow: '0 0 50px rgba(53, 75, 181, 0.3)' }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-8 px-16 py-8 bg-white text-black font-black uppercase tracking-[0.3em] text-sm md:text-lg hover:bg-[#354BB5] hover:text-white transition-all duration-700 rounded-sm relative overflow-hidden group shadow-2xl"
+              >
+                <span className="relative z-10">Start a conversation</span>
+                <span className="relative z-10 text-2xl transition-transform duration-500 group-hover:translate-x-2">→</span>
+                <div className="absolute inset-0 bg-[#354BB5] translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[0.16, 1, 0.3, 1]" />
+              </motion.a>
+            </motion.div>
+
+            {/* SECONDARY CTAs */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6, duration: 1 }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mx-auto"
             >
               {/* AI ESPRESSO CARD */}
-              <a 
+              <motion.a 
                 href="https://aiespresso.it" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="group relative flex flex-col items-start p-8 rounded-sm overflow-hidden border border-white/5 bg-white/[0.02] hover:border-[#FF6B00]/50 transition-all duration-500"
+                whileHover={{ y: -8, scale: 1.01 }}
+                className="group relative flex flex-col items-start p-10 rounded-sm overflow-hidden border border-white/5 bg-white/[0.01] transition-all duration-700 hover:border-[#FF6B00]/30 hover:bg-white/[0.03]"
               >
                 {/* Background Gradient Hover - Orange */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#FF6B00]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FF6B00]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                 
-                <div className="relative z-10 flex flex-col items-start gap-4">
-                  <span className="text-[10px] uppercase tracking-[0.4em] text-white/30 group-hover:text-[#FF6B00] transition-colors">Join the newsletter</span>
-                  <div className="flex items-center gap-3">
-                    <span className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight">AI Espresso</span>
-                    <span className="text-lg opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-500 text-[#FF6B00]">→</span>
+                <div className="relative z-10 flex flex-col items-start gap-6 w-full">
+                  <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/30 group-hover:text-[#FF6B00] transition-colors font-bold">Join the newsletter</span>
+                  <div className="flex items-center justify-between w-full">
+                    <span className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight">AI Espresso</span>
+                    <span className="text-xl opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-700 text-[#FF6B00]">→</span>
                   </div>
                 </div>
-              </a>
+              </motion.a>
 
               {/* LINKEDIN CARD */}
-              <a 
+              <motion.a 
                 href="https://linkedin.com/in/marnaboldi" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="group relative flex flex-col items-start p-8 rounded-sm overflow-hidden border border-white/5 bg-white/[0.02] hover:border-[#354BB5]/50 transition-all duration-500"
+                whileHover={{ y: -8, scale: 1.01 }}
+                className="group relative flex flex-col items-start p-10 rounded-sm overflow-hidden border border-white/5 bg-white/[0.01] transition-all duration-700 hover:border-accent/30 hover:bg-white/[0.03]"
               >
                 {/* Background Gradient Hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#354BB5]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                 
-                <div className="relative z-10 flex flex-col items-start gap-4">
-                  <span className="text-[10px] uppercase tracking-[0.4em] text-white/30 group-hover:text-accent transition-colors">Daily Insights</span>
-                  <div className="flex items-center gap-3">
-                    <span className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight">LinkedIn</span>
-                    <span className="text-lg opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-500 text-accent">→</span>
+                <div className="relative z-10 flex flex-col items-start gap-6 w-full">
+                  <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/30 group-hover:text-accent transition-colors font-bold">Daily Insights</span>
+                  <div className="flex items-center justify-between w-full">
+                    <span className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight">LinkedIn</span>
+                    <span className="text-xl opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-700 text-accent">→</span>
                   </div>
                 </div>
-              </a>
+              </motion.a>
             </motion.div>
 
           </div>
