@@ -37,7 +37,7 @@
     --secondary: #0f172a; /* Slate 900 */
     --secondary-foreground: #94a3b8; /* Slate 400 */
     
-    --accent: #7c3aed; /* Morfeus Purple - Vision */
+    --accent: #354BB5; /* Updated Accent Color */
     --accent-foreground: #ffffff;
     
     --muted: #1e293b;
@@ -45,7 +45,7 @@
     
     --border: #1e293b;
     --input: #1e293b;
-    --ring: #7c3aed;
+    --ring: #354BB5;
     
     --radius: 0px; /* Sharp corners for authority and solidity */
   }

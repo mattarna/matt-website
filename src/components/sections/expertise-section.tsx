@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const expertiseData = [
   {
@@ -45,65 +45,65 @@ const expertiseData = [
   }
 ];
 
-interface TextBlockProps {
-  data: typeof expertiseData[0];
-  onInView: () => void;
-}
+const ScrollingImage = ({ 
+  data, 
+  index, 
+  progress 
+}: { 
+  data: typeof expertiseData[0]; 
+  index: number; 
+  progress: any;
+}) => {
+  // We divide the 1.0 progress into 3 parts (0.33 each)
+  const segment = 1 / expertiseData.length;
+  const startTransition = index * segment;
+  
+  // The transition starts a bit before the segment and ends a bit after 
+  // to make it feel like it takes "some scroll notches"
+  const y = useTransform(
+    progress,
+    [startTransition - 0.15, startTransition + 0.15],
+    ["100%", "0%"]
+  );
 
-const TextBlock: React.FC<TextBlockProps> = ({ data, onInView }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  // Trigger when element is roughly in the middle of the viewport
-  const isInView = useInView(ref, { margin: "-45% 0px -45% 0px" });
-
-  useEffect(() => {
-    if (isInView) {
-      onInView();
-    }
-  }, [isInView, onInView]);
+  // First image is the base, always at 0
+  if (index === 0) {
+    return (
+      <div className="absolute inset-0 z-0">
+        <img
+          src={data.image}
+          alt={data.title}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+      </div>
+    );
+  }
 
   return (
-    <div ref={ref} className="h-screen flex flex-col justify-center w-full max-w-xl">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, margin: "-10%" }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <div className="flex items-center gap-4 mb-6">
-          <span className="font-mono text-sm font-bold text-white/40 tracking-widest">
-            {data.id}
-          </span>
-          <div className="h-px w-8 bg-white/20" />
-        </div>
-        
-        <h3 className="text-4xl md:text-5xl font-extrabold text-white tracking-tighter mb-6 leading-none uppercase">
-          {data.title}
-        </h3>
-        
-        <p className="text-lg md:text-xl text-white/60 leading-relaxed mb-10 max-w-lg">
-          {data.description}
-        </p>
-        
-        <div className="flex flex-col gap-4">
-          {data.bullets.map((bullet, i) => (
-            <div key={i} className="flex items-start gap-4 group">
-              <span className="text-white/40 text-xs mt-1.5 transition-transform group-hover:translate-x-1 font-mono">▶</span>
-              <span className="text-base md:text-lg text-white/80 tracking-tight font-bold transition-colors group-hover:text-white uppercase">
-                {bullet}
-              </span>
-            </div>
-          ))}
-        </div>
-      </motion.div>
-    </div>
+    <motion.div
+      style={{ y, zIndex: index }}
+      className="absolute inset-0 overflow-hidden bg-[#354BB5]"
+    >
+      <img
+        src={data.image}
+        alt={data.title}
+        className="w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+    </motion.div>
   );
 };
 
 export const ExpertiseSection: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
 
   return (
-    <section className="relative bg-[#354BB5] py-24 md:py-32">
+    <section ref={containerRef} className="relative bg-[#354BB5] py-24 md:py-32">
       {/* Grid Background Overlay */}
       <div 
         className="absolute inset-0 z-0 pointer-events-none opacity-[0.08]" 
@@ -115,7 +115,7 @@ export const ExpertiseSection: React.FC = () => {
 
       <div className="container relative z-10 mx-auto px-8 md:px-16 lg:px-24">
         
-        {/* SECTION HEADER - BALANCED */}
+        {/* SECTION HEADER */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -138,13 +138,42 @@ export const ExpertiseSection: React.FC = () => {
         <div className="flex flex-col lg:flex-row items-start justify-center gap-12 lg:gap-24">
           
           {/* LEFT SIDE: SCROLLING TEXT CONTENT */}
-          <div className="flex-1 flex flex-col">
-            {expertiseData.map((data, index) => (
-              <TextBlock 
-                key={data.id} 
-                data={data} 
-                onInView={() => setActiveIndex(index)}
-              />
+          <div className="flex-[1.2] flex flex-col">
+            {expertiseData.map((data) => (
+              <div key={data.id} className="h-screen flex flex-col justify-center w-full max-w-xl">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, margin: "-10%" }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div className="flex items-center gap-4 mb-6">
+                    <span className="font-mono text-sm font-bold text-white/40 tracking-widest">
+                      {data.id}
+                    </span>
+                    <div className="h-px w-8 bg-white/20" />
+                  </div>
+                  
+                  <h3 className="text-4xl md:text-5xl font-extrabold text-white tracking-tighter mb-6 leading-none uppercase">
+                    {data.title}
+                  </h3>
+                  
+                  <p className="text-lg md:text-xl text-white/60 leading-relaxed mb-10 max-w-lg">
+                    {data.description}
+                  </p>
+                  
+                  <div className="flex flex-col gap-4">
+                    {data.bullets.map((bullet, i) => (
+                      <div key={i} className="flex items-start gap-4 group">
+                        <span className="text-white/40 text-xs mt-1.5 transition-transform group-hover:translate-x-1 font-mono">▶</span>
+                        <span className="text-sm md:text-base lg:text-lg text-white/80 tracking-tight font-bold transition-colors group-hover:text-white uppercase">
+                          {bullet}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
             ))}
           </div>
 
@@ -160,29 +189,15 @@ export const ExpertiseSection: React.FC = () => {
                   ))}
                 </div>
 
-                {/* Image Container with smooth stacking effect */}
-                <div className="relative w-full h-full rounded-sm overflow-hidden border border-white/10 shadow-2xl bg-[#2a3c91]">
+                {/* Image Container with granular scroll stacking effect */}
+                <div className="relative w-full h-full rounded-sm overflow-hidden border border-white/10 shadow-2xl">
                   {expertiseData.map((data, index) => (
-                    <motion.div
-                      key={data.id}
-                      initial={false}
-                      animate={{ 
-                        y: index <= activeIndex ? '0%' : '100%'
-                      }}
-                      transition={{ 
-                        duration: 0.7, 
-                        ease: [0.16, 1, 0.3, 1] 
-                      }}
-                      className="absolute inset-0"
-                      style={{ zIndex: index }}
-                    >
-                      <img
-                        src={data.image}
-                        alt={data.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-                    </motion.div>
+                    <ScrollingImage 
+                      key={data.id} 
+                      data={data} 
+                      index={index} 
+                      progress={scrollYProgress} 
+                    />
                   ))}
                 </div>
               </div>

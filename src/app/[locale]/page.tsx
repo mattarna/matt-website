@@ -1,6 +1,7 @@
 import { HeroSection } from '@/components/sections/hero-section';
 import { PrinciplesSection } from '@/components/sections/principles-section';
 import { ExpertiseSection } from '@/components/sections/expertise-section';
+import { LogoSection } from '@/components/sections/logo-section';
 import React from 'react';
 
 interface HomeProps {
@@ -17,6 +18,7 @@ export default async function Home({ params }: HomeProps) {
       <HeroSection />
       <PrinciplesSection />
       <ExpertiseSection />
+      <LogoSection />
     </main>
   );
 }
