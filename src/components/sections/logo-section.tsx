@@ -52,8 +52,6 @@ export const LogoSection: React.FC = () => {
             duration: 40,
             repeat: Infinity, 
             ease: "linear",
-            // Pause on hover
-            pause: true
           }}
         >
           {doubledLogos.map((logo, index) => (

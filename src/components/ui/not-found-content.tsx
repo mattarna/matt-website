@@ -26,7 +26,7 @@ export const NotFoundContent: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as any }}
             className="mb-12"
           >
             <span className="font-mono text-[20vw] md:text-[15vw] font-black text-white/[0.03] leading-none tracking-tighter select-none">

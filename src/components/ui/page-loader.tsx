@@ -22,7 +22,7 @@ export const PageLoader: React.FC = () => {
           initial={{ opacity: 1 }}
           exit={{ 
             opacity: 0,
-            transition: { duration: 1, ease: [0.16, 1, 0.3, 1] }
+            transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as any }
           }}
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-black"
         >
@@ -31,7 +31,7 @@ export const PageLoader: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as any }}
               className="flex flex-col items-center"
             >
               <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase">
