@@ -99,7 +99,7 @@ export const SelectedWorkSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="border-t border-white/5 last:border-b"
+              className="border-t border-white/20 md:border-white/5 last:border-b"
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
               onClick={() => setSelectedProject(project.id)}
