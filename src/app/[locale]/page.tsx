@@ -2,6 +2,10 @@ import { HeroSection } from '@/components/sections/hero-section';
 import { PrinciplesSection } from '@/components/sections/principles-section';
 import { ExpertiseSection } from '@/components/sections/expertise-section';
 import { LogoSection } from '@/components/sections/logo-section';
+import { SelectedWorkSection } from '@/components/sections/selected-work-section';
+import { ManifestoSection } from '@/components/sections/manifesto-section';
+import { QualificationSection } from '@/components/sections/qualification-section';
+import { CTASection } from '@/components/sections/cta-section';
 import React from 'react';
 
 interface HomeProps {
@@ -19,6 +23,10 @@ export default async function Home({ params }: HomeProps) {
       <PrinciplesSection />
       <ExpertiseSection />
       <LogoSection />
+      <SelectedWorkSection />
+      <ManifestoSection />
+      <QualificationSection />
+      <CTASection />
     </main>
   );
 }
