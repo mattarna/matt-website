@@ -97,7 +97,7 @@ export const HeroSection: React.FC = () => {
             muted
             playsInline
             preload="auto"
-            className="h-[75vh] md:h-[95vh] w-auto max-w-none object-contain mix-blend-screen opacity-100"
+            className="h-[75vh] md:h-[95vh] w-auto max-w-none object-contain mix-blend-screen opacity-90"
           >
             <source src="/VIDEO MATT 2.mp4" type="video/mp4" />
           </video>
