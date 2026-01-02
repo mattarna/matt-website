@@ -6,12 +6,17 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 const logos = [
-  '/loghi-matt (1).png',
-  '/loghi-matt (2).png',
-  '/loghi-matt (3).png',
-  '/loghi-matt (4).png',
-  '/loghi-matt (5).png',
-  '/LOGHI SITO (1).png',
+  '/loghi matt (1).png',
+  '/loghi matt (2).png',
+  '/loghi matt (3).png',
+  '/loghi matt (4).png',
+  '/loghi matt (5).png',
+  '/loghi matt (6).png',
+  '/loghi matt (7).png',
+  '/loghi matt (8).png',
+  '/loghi matt (9).png',
+  '/loghi matt (10).png',
+  '/loghi matt (11).png',
 ];
 
 export const LogoSection: React.FC = () => {
