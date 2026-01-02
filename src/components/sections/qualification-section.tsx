@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 
 export const QualificationSection: React.FC = () => {
   const t = useTranslations('qualification');
+  const idealClient = t('idealClient');
 
   const pillars = [
     { id: '01', title: t('pillars.0.title'), desc: t('pillars.0.desc') },
@@ -51,11 +52,7 @@ export const QualificationSection: React.FC = () => {
           className="mb-20 md:mb-32"
         >
           <p className="text-xl md:text-4xl lg:text-5xl font-bold text-white/90 leading-tight tracking-tight text-center max-w-5xl mx-auto uppercase italic">
-            {t('idealClient').split(t('realComplexity'))[0]}
-            <span className="text-white underline decoration-white/30 underline-offset-8">{t('realComplexity')}</span>
-            {t('idealClient').split(t('realComplexity'))[1]?.split(t('decisionsMatter'))[0]}
-            <span className="text-white underline decoration-white/30 underline-offset-8">{t('decisionsMatter')}</span>
-            {t('idealClient').split(t('decisionsMatter'))[1]}
+            {idealClient}
           </p>
         </motion.div>
 
