@@ -1,12 +1,268 @@
 {
   "common": {
     "title": "Matteo Arnaboldi | Strategic Systems",
-    "description": "Translating innovation into strategic growth for mature businesses."
+    "description": "Turning complexity into clarity, and clarity into systems that work."
   },
-  "home": {
+  "header": {
+    "principles": "Principles",
+    "expertise": "Expertise",
+    "work": "Work",
+    "manifesto": "Manifesto",
+    "contact": "Contact",
+    "status": "SYS_ACTIVE"
+  },
+  "navigation": {
+    "start": "Start",
+    "principles": "Principles",
+    "expertise": "Operating Model",
+    "work": "Selected Work",
+    "manifesto": "Manifesto",
+    "qualification": "Engagement",
+    "contact": "Contact"
+  },
+  "hero": {
+    "name": "MATT",
+    "surname": "Arnaboldi",
+    "role": "Strategic Operator",
+    "subrole": "Founder & Builder",
+    "pillar1": "Entrepreneur",
+    "pillar2": "AI Systems",
+    "pillar3": "Performance Marketing",
+    "location": "Milano, Italy",
+    "tagline1": "Turning complexity into",
+    "taglineHighlight1": "clarity",
+    "tagline2": "and clarity into",
+    "taglineHighlight2": "systems that work",
+    "cta": "Let's Connect",
+    "scroll": "Scroll"
+  },
+  "principles": {
+    "label": "Principles",
+    "title": "Operating Principles",
+    "subtitle": "Not slogans. Filters for every decision I make.",
+    "list": [
+      "I don't chase trends. I build what lasts.",
+      "Clarity is an ethical act against complexity.",
+      "Systems should elevate people, not replace them.",
+      "Growth without foundations is just future debt.",
+      "Innovation is only valuable when it becomes usable structure.",
+      "Truth and courage are the only real multipliers in business."
+    ],
+    "commitmentLabel": "The Commitment",
+    "commitmentQuote": "\"Everything I touch should leave better than I found it.\"",
+    "midasTitle": "The New Midas Touch",
+    "midasDesc": "An obsession with quality that turns potential into enduring value.",
+    "signature": "Founder & Operator"
+  },
+  "expertise": {
+    "label": "Operating Model",
+    "title": "Strategic Operating Model",
+    "subtitle": "Systems designed to turn complexity into clear direction and durable growth. Built for environments where decisions carry real weight.",
+    "insight": "I build infrastructures that make heroism optional. Your team will thank me. Your competitors won't.",
+    "areas": [
+      {
+        "id": "01",
+        "title": "Company Building",
+        "description": "I help founders turn complexity into clear direction, ownership, and durable execution. Scaling a business requires more than just energy; it requires a repeatable operating cadence that reduces cognitive load and empowers teams.",
+        "bullets": [
+          "Decision design and strategic prioritization",
+          "Operating cadence and leadership accountability",
+          "Strategy translated into clear execution systems",
+          "Organizational design for high-growth environments",
+          "Standard Operating Procedures (SOPs) for scalability"
+        ]
+      },
+      {
+        "id": "02",
+        "title": "AI Systems",
+        "description": "I integrate AI where it improves decisions and operations, without creating fragility. AI should not be a gimmick; it must be a structural leverage point that enhances human capability and operational efficiency.",
+        "bullets": [
+          "Practical workflow and process automation design",
+          "Internal knowledge systems and leverage architecture",
+          "Custom AI guardrails, governance, and adoption",
+          "Integration of LLMs into core business functions",
+          "AI-driven data analysis for strategic insights"
+        ]
+      },
+      {
+        "id": "03",
+        "title": "Growth Systems",
+        "description": "I build demand and growth systems that perform without burning the brand or the team. Performance marketing is not just about spending; it is about building an acquisition architecture that scales with predictable ROI.",
+        "bullets": [
+          "Strategic demand and positioning mechanics",
+          "End-to-end funnel and lifecycle architecture",
+          "Performance loops and advanced measurement",
+          "Multi-channel acquisition and scaling strategies",
+          "Brand-consistent growth optimization"
+        ]
+      }
+    ]
+  },
+  "logos": {
+    "title": "Name-dropping,",
+    "titleItalic": "briefly",
+    "subtitle": "It's the past. Not that important, but people seem to care"
+  },
+  "work": {
+    "label": "Portfolio",
+    "title": "Selected Work",
+    "subtitle": "Systems built. Results delivered. Some of the projects and collaborations of the last 4 years.",
+    "atWork": "At Work",
+    "completed": "Archive / Completed",
+    "sector": "Sector",
+    "timeline": "Timeline",
+    "keyImpact": "Key Impact",
+    "status": "Status",
+    "projects": [
+      {
+        "id": "ai-espresso",
+        "title": "AI Espresso",
+        "category": "Newsletter & Community",
+        "year": "2025",
+        "status": "active",
+        "highlight": "16th Fastest Growing Worldwide",
+        "metric": "6,000+ readers in 6 months",
+        "description": "AI Espresso is my operator-first newsletter where AI becomes usable structure, not noise. It's framed through a Fallout-inspired world, with me as the barista-guide serving \"espresso shots\" of clarity: practical frameworks, checklists, and real examples to help founders and teams make better decisions, build stronger systems, and execute with less fragility.\n\nNo trend-chasing. Just disciplined AI for real work, plus an optional Advanced Vault for deeper technical and strategic layers.\n\nResults: 16th fastest growing newsletter worldwide on Substack, with 6,000+ readers acquired in less than 6 months."
+      },
+      {
+        "id": "morfeus",
+        "title": "Morfeus",
+        "category": "AI Consulting",
+        "year": "2024",
+        "status": "active",
+        "highlight": "AI Implementation for Enterprises",
+        "metric": "Custom AI Agents",
+        "description": "In recent years, I've integrated artificial intelligence extensively into the projects I lead — and the results have been game-changing. That journey led to the birth of Morfeus, a venture I co-founded with two partners.\n\nOur vision: helping companies adopt AI consciously and effectively, through the development of custom AI Agents and tailored solutions that actually solve business problems."
+      },
+      {
+        "id": "automazione-vincente",
+        "title": "Automazione Vincente",
+        "category": "Automation & E-commerce",
+        "year": "2022",
+        "status": "completed",
+        "highlight": "AI-Powered Email Marketing",
+        "metric": "+30% Cart Recovery",
+        "description": "The protocol to exploit email marketing and automation to increase performance: a step by step procedure to optimize an effective email marketing system thanks to AI and the skills of our team.\n\nResults: Ensures no email ends up in spam, recovers 30% more abandoned carts, and increases the lifetime value of every single customer."
+      },
+      {
+        "id": "dsyre-school",
+        "title": "DSYRE School",
+        "category": "Education Platform",
+        "year": "2020",
+        "status": "completed",
+        "highlight": "Gamer Academy",
+        "metric": "Warzone Masterplayer",
+        "description": "The first projects I worked on in my career were infoproducts and video courses. Over the years, my team and I have developed great skills in launching online schools and academies.\n\nGiven this past and my passion for the gaming world, together with our partner Dsyre, a rapidly growing Italian Esports Team, we opened the doors to the online training academy for Gamers by launching the first course in July 2022: \"Warzone Masterplayer\"."
+      },
+      {
+        "id": "lead-by-neo",
+        "title": "Lead by Neo",
+        "category": "AI Lead Generation",
+        "year": "2019",
+        "status": "completed",
+        "highlight": "AI-Powered Lead Generation",
+        "metric": "High-Quality Appointments",
+        "description": "We are an Artificial Intelligence Consulting Agency. We take care of generating highly profiled appointments for our partners.\n\nOur promise: \"We use the power of Artificial Intelligence to enable our partners to effortlessly generate a continuous flow of high-quality appointments and leads in less than 60 days, bypassing the limitations and inefficiencies of traditional lead generation approaches.\""
+      }
+    ]
+  },
+  "manifesto": {
+    "intro1": "I don't build for speed alone.",
+    "intro2": "I build for what holds.",
+    "p1": "Most problems aren't solved by more tools or automation. They're solved by clarity: seeing the system as it is, naming the trade-offs, and choosing a direction you can stand behind.",
+    "clarityHighlight": "clarity",
+    "p2": "Clarity is not a soft skill. It's an ethical act. Because unclear decisions create fragility, waste time, and quietly erode trust.",
+    "ethicalHighlight": "ethical act",
+    "p3": "Technology matters only when it becomes usable structure. Not novelty. Not performance theater. Structure that reduces load, strengthens execution, and elevates people.",
+    "structureHighlight": "usable structure",
+    "p4": "I work like an operator, not a spectator. Where complexity is real and consequences exist. Where decisions can't be postponed or disguised as experimentation.",
+    "operatorHighlight": "operator",
+    "principle1": "Growth without foundations is debt.",
+    "principle2": "Innovation without discipline is noise.",
+    "principle3": "Systems that don't respect humans eventually break.",
+    "closing": "The real advantage today is not moving faster, but deciding better. Building things that last. Leaving people, projects, and organizations stronger than I found them.",
+    "decidingHighlight": "deciding better",
+    "commitmentLabel": "The Commitment",
+    "midasTitle": "The New Midas Touch",
+    "midasQuote": "\"Everything I touch should leave better than it was before.\"",
+    "meta1": "Strategic Systems",
+    "meta2": "AI Integration",
+    "meta3": "10+ Years Experience"
+  },
+  "qualification": {
+    "label": "Engagement Qualification",
+    "title": "Working With Me",
+    "idealClient": "Founders and leadership teams facing real complexity. Businesses past the idea phase. Environments where decisions matter.",
+    "realComplexity": "real complexity",
+    "decisionsMatter": "decisions matter",
+    "pillars": [
+      {
+        "id": "01",
+        "title": "Strategic Operator",
+        "desc": "Working alongside founders in the room where decisions happen."
+      },
+      {
+        "id": "02",
+        "title": "System Designer",
+        "desc": "Architecting growth, AI, and decision-making infrastructure."
+      },
+      {
+        "id": "03",
+        "title": "Force Multiplier",
+        "desc": "High-leverage support during critical transformation phases."
+      }
+    ],
+    "notFor": "Not for those seeking shortcuts, trends, or execution without accountability.",
+    "closing": "If this resonates, you know where to find me."
+  },
+  "cta": {
+    "context": "I don't take on many personal projects. I typically engage through 1:1 mentorship, strategic consulting, or as a long-term operator for founders.",
+    "mentorship": "1:1 mentorship",
+    "consulting": "strategic consulting",
+    "operator": "long-term operator",
+    "title1": "Facing real",
+    "title2": "complexity?",
+    "title3": "Let's talk.",
+    "button": "Start a conversation",
+    "newsletterLabel": "Join the newsletter",
+    "linkedinLabel": "Daily Insights"
+  },
+  "footer": {
     "tagline": "Strategic Infrastructure",
-    "welcome": "I don't talk about AI. I build the systems that make it <span>profitable</span>.",
-    "subtitle": "Translating innovation into strategic growth for mature businesses and leadership teams.",
-    "cta": "If you're facing a decision you can't afford to get wrong, you can write to me."
+    "funFact": "Useless Fact #42",
+    "funFactText": "\"This website was built faster than it takes to explain AI to my grandma.\"",
+    "direct": "Direct",
+    "base": "Base",
+    "status": "Operating Status",
+    "statusText": "Currently Scaling",
+    "dontClick": "Don't Click This",
+    "selfDestruct": "Self-Destruct",
+    "privacy": "Privacy Policy",
+    "cookie": "Cookie Policy",
+    "builtWith": "Built with AI & Espresso"
+  },
+  "notFound": {
+    "error": "[SYSTEM_ERROR]",
+    "title1": "Sector",
+    "title2": "Not Found",
+    "message": "The coordinates you entered don't match any known system. Make espresso. Try again.",
+    "returnButton": "Return to Base",
+    "reportButton": "Report Bug",
+    "funFact": "Fun fact: This page took longer to design than most startups take to pivot."
+  },
+  "selfDestruct": {
+    "protocol": "Security Protocol 000",
+    "title": "Self-Destruct Sequence",
+    "intro": "You were told not to click. The infrastructure is now unstable. Every system, decision, and espresso shot is being de-materialized.",
+    "initiateButton": "Initiate Sequence",
+    "critical": "CRITICAL FAILURE IMMINENT",
+    "aborting": "ABORTING SEQUENCE...",
+    "cancelButton": "Cancel (Too late?)",
+    "stabilized": "Systems stabilized. Returning to safety...",
+    "log1": "Deleting \"ai-espresso\" cache...",
+    "log2": "Off-loading \"morfeus\" infrastructure...",
+    "log3": "Shredding \"clarity\" systems...",
+    "log4": "Dumping espresso into the void...",
+    "log5": "TOTAL WIPEOUT DETECTED"
   }
 }

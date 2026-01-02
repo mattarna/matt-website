@@ -2,8 +2,11 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 export const ManifestoSection: React.FC = () => {
+  const t = useTranslations('manifesto');
+
   return (
     <section id="manifesto" className="relative min-h-screen flex items-center overflow-hidden">
       
@@ -31,61 +34,55 @@ export const ManifestoSection: React.FC = () => {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             <p className="text-xl md:text-2xl lg:text-3xl font-bold text-white uppercase tracking-wide leading-relaxed mb-12">
-              I don&apos;t build for speed alone.
+              {t('intro1')}
               <br />
-              <span className="text-white/40">I build for what holds.</span>
+              <span className="text-white/40">{t('intro2')}</span>
             </p>
 
             <div className="space-y-8 mb-16">
               <p className="text-lg md:text-xl text-white/70 leading-relaxed">
-                Most problems aren&apos;t solved by more tools or automation.
-                <br />
-                They&apos;re solved by <span className="text-white font-semibold">clarity</span>: seeing the system as it is, naming the trade-offs, and choosing a direction you can stand behind.
+                {t('p1').split(t('clarityHighlight'))[0]}
+                <span className="text-white font-semibold">{t('clarityHighlight')}</span>
+                {t('p1').split(t('clarityHighlight'))[1]}
               </p>
 
               <p className="text-lg md:text-xl text-white/70 leading-relaxed">
-                Clarity is not a soft skill. It&apos;s an <span className="text-white font-semibold">ethical act</span>.
-                <br />
-                Because unclear decisions create fragility, waste time, and quietly erode trust.
+                {t('p2').split(t('ethicalHighlight'))[0]}
+                <span className="text-white font-semibold">{t('ethicalHighlight')}</span>
+                {t('p2').split(t('ethicalHighlight'))[1]}
               </p>
 
               <p className="text-lg md:text-xl text-white/70 leading-relaxed">
-                Technology matters only when it becomes <span className="text-white font-semibold">usable structure</span>.
-                <br />
-                Not novelty. Not performance theater.
-                <br />
-                Structure that reduces load, strengthens execution, and elevates people.
+                {t('p3').split(t('structureHighlight'))[0]}
+                <span className="text-white font-semibold">{t('structureHighlight')}</span>
+                {t('p3').split(t('structureHighlight'))[1]}
               </p>
 
               <p className="text-lg md:text-xl text-white/70 leading-relaxed">
-                I work like an <span className="text-white font-semibold">operator</span>, not a spectator.
-                <br />
-                Where complexity is real and consequences exist.
-                <br />
-                Where decisions can&apos;t be postponed or disguised as experimentation.
+                {t('p4').split(t('operatorHighlight'))[0]}
+                <span className="text-white font-semibold">{t('operatorHighlight')}</span>
+                {t('p4').split(t('operatorHighlight'))[1]}
               </p>
             </div>
 
             {/* KEY PRINCIPLES - Condensed */}
             <div className="border-l-2 border-white/20 pl-6 mb-16 space-y-3">
               <p className="text-base md:text-lg text-white/50 uppercase tracking-wider font-bold">
-                Growth without foundations is debt.
+                {t('principle1')}
               </p>
               <p className="text-base md:text-lg text-white/50 uppercase tracking-wider font-bold">
-                Innovation without discipline is noise.
+                {t('principle2')}
               </p>
               <p className="text-base md:text-lg text-white/50 uppercase tracking-wider font-bold">
-                Systems that don&apos;t respect humans eventually break.
+                {t('principle3')}
               </p>
             </div>
 
             {/* CLOSING STATEMENT */}
             <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-16">
-              The real advantage today is not moving faster, but <span className="text-white font-semibold">deciding better</span>.
-              <br />
-              Building things that last.
-              <br />
-              Leaving people, projects, and organizations stronger than I found them.
+              {t('closing').split(t('decidingHighlight'))[0]}
+              <span className="text-white font-semibold">{t('decidingHighlight')}</span>
+              {t('closing').split(t('decidingHighlight'))[1]}
             </p>
 
             {/* THE NEW MIDAS TOUCH */}
@@ -97,13 +94,13 @@ export const ManifestoSection: React.FC = () => {
               className="pt-8 border-t border-white/10"
             >
               <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-accent/80 mb-6 block font-bold">
-                The Commitment
+                {t('commitmentLabel')}
               </span>
               <h3 className="text-2xl md:text-4xl lg:text-5xl font-black text-white uppercase tracking-tighter leading-tight">
-                The New Midas Touch
+                {t('midasTitle')}
               </h3>
               <p className="mt-4 text-xl md:text-2xl text-white/60 italic">
-                &quot;Everything I touch should leave better than it was before.&quot;
+                {t('midasQuote')}
               </p>
             </motion.div>
 
@@ -118,13 +115,13 @@ export const ManifestoSection: React.FC = () => {
             className="mt-20 flex flex-col items-end gap-1"
           >
             <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/30 font-bold">
-              Strategic Systems
+              {t('meta1')}
             </span>
             <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/30 font-bold">
-              AI Integration
+              {t('meta2')}
             </span>
             <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/30 font-bold">
-              10+ Years Experience
+              {t('meta3')}
             </span>
           </motion.div>
 
@@ -137,4 +134,3 @@ export const ManifestoSection: React.FC = () => {
     </section>
   );
 };
-

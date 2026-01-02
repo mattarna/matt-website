@@ -2,85 +2,53 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
-const projects = [
-  {
-    id: 'ai-espresso',
-    title: 'AI Espresso',
-    category: 'Newsletter & Community',
-    year: '2025',
-    status: 'active',
-    highlight: '16th Fastest Growing Worldwide',
-    metric: '6,000+ readers in 6 months',
-    image: '/AI Espresso.png',
-    description: `AI Espresso is my operator-first newsletter where AI becomes usable structure, not noise. It's framed through a Fallout-inspired world, with me as the barista-guide serving "espresso shots" of clarity: practical frameworks, checklists, and real examples to help founders and teams make better decisions, build stronger systems, and execute with less fragility.
+const projectImages: Record<string, string> = {
+  'ai-espresso': '/AI Espresso.png',
+  'morfeus': '/MORFEUS.png',
+  'automazione-vincente': '/Automazione-vincente-image-backround-1536x1024.png',
+  'dsyre-school': '/DSYRE school.png',
+  'lead-by-neo': '/LEAD-BY-NEO-1536x1024.png',
+};
 
-No trend-chasing. Just disciplined AI for real work, plus an optional Advanced Vault for deeper technical and strategic layers.
-
-Results: 16th fastest growing newsletter worldwide on Substack, with 6,000+ readers acquired in less than 6 months.`,
-  },
-  {
-    id: 'morfeus',
-    title: 'Morfeus',
-    category: 'AI Consulting',
-    year: '2024',
-    status: 'active',
-    highlight: 'AI Implementation for Enterprises',
-    metric: 'Custom AI Agents',
-    image: '/MORFEUS.png',
-    description: `In recent years, I've integrated artificial intelligence extensively into the projects I lead — and the results have been game-changing. That journey led to the birth of Morfeus, a venture I co-founded with two partners.
-
-Our vision: helping companies adopt AI consciously and effectively, through the development of custom AI Agents and tailored solutions that actually solve business problems.`,
-  },
-  {
-    id: 'automazione-vincente',
-    title: 'Automazione Vincente',
-    category: 'Automation & E-commerce',
-    year: '2022',
-    status: 'completed',
-    highlight: 'AI-Powered Email Marketing',
-    metric: '+30% Cart Recovery',
-    image: '/Automazione-vincente-image-backround-1536x1024.png',
-    description: `The protocol to exploit email marketing and automation to increase performance: a step by step procedure to optimize an effective email marketing system thanks to AI and the skills of our team.
-
-Results: Ensures no email ends up in spam, recovers 30% more abandoned carts, and increases the lifetime value of every single customer.`,
-  },
-  {
-    id: 'dsyre-school',
-    title: 'DSYRE School',
-    category: 'Education Platform',
-    year: '2020',
-    status: 'completed',
-    highlight: 'Gamer Academy',
-    metric: 'Warzone Masterplayer',
-    image: '/DSYRE school.png',
-    description: `The first projects I worked on in my career were infoproducts and video courses. Over the years, my team and I have developed great skills in launching online schools and academies.
-
-Given this past and my passion for the gaming world, together with our partner Dsyre, a rapidly growing Italian Esports Team, we opened the doors to the online training academy for Gamers by launching the first course in July 2022: "Warzone Masterplayer".`,
-  },
-  {
-    id: 'lead-by-neo',
-    title: 'Lead by Neo',
-    category: 'AI Lead Generation',
-    year: '2019',
-    status: 'completed',
-    highlight: 'AI-Powered Lead Generation',
-    metric: 'High-Quality Appointments',
-    image: '/LEAD-BY-NEO-1536x1024.png',
-    description: `We are an Artificial Intelligence Consulting Agency. We take care of generating highly profiled appointments for our partners.
-
-Our promise: "We use the power of Artificial Intelligence to enable our partners to effortlessly generate a continuous flow of high-quality appointments and leads in less than 60 days, bypassing the limitations and inefficiencies of traditional lead generation approaches."`,
-  },
-];
+interface Project {
+  id: string;
+  title: string;
+  category: string;
+  year: string;
+  status: string;
+  highlight: string;
+  metric: string;
+  description: string;
+  image: string;
+}
 
 export const SelectedWorkSection: React.FC = () => {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const t = useTranslations('work');
 
   const handleMouseMove = (e: React.MouseEvent) => {
     setMousePosition({ x: e.clientX, y: e.clientY });
   };
+
+  // Build projects from translations
+  const projects: Project[] = [0, 1, 2, 3, 4].map((i) => {
+    const id = t(`projects.${i}.id`);
+    return {
+      id,
+      title: t(`projects.${i}.title`),
+      category: t(`projects.${i}.category`),
+      year: t(`projects.${i}.year`),
+      status: t(`projects.${i}.status`),
+      highlight: t(`projects.${i}.highlight`),
+      metric: t(`projects.${i}.metric`),
+      description: t(`projects.${i}.description`),
+      image: projectImages[id] || '',
+    };
+  });
 
   const activeProject = projects.find(p => p.id === hoveredProject);
   const openProject = projects.find(p => p.id === selectedProject);
@@ -111,13 +79,13 @@ export const SelectedWorkSection: React.FC = () => {
         >
           <div className="flex items-center gap-4 mb-6">
             <div className="h-[1px] w-8 bg-accent/60" />
-            <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-accent/80 font-bold">Portfolio</span>
+            <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-accent/80 font-bold">{t('label')}</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-extrabold text-white tracking-tighter leading-tight uppercase">
-            Selected Work
+            {t('title')}
           </h2>
           <p className="mt-6 text-lg text-white/40 max-w-xl leading-relaxed">
-            Systems built. Results delivered. Some of the projects and collaborations of the last 4 years.
+            {t('subtitle')}
           </p>
         </motion.div>
 
@@ -159,11 +127,11 @@ export const SelectedWorkSection: React.FC = () => {
                       {project.status === 'active' ? (
                         <span className="hidden md:inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold uppercase tracking-[0.2em] rounded-sm">
                           <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
-                          At Work
+                          {t('atWork')}
                         </span>
                       ) : (
                         <span className="hidden md:inline-flex px-3 py-1 bg-white/5 border border-white/10 text-white/40 text-[10px] font-bold uppercase tracking-[0.2em] rounded-sm">
-                          Completed
+                          {t('completed')}
                         </span>
                       )}
                     </div>
@@ -309,11 +277,11 @@ export const SelectedWorkSection: React.FC = () => {
                 {openProject.status === 'active' ? (
                   <span className="inline-flex items-center gap-2 px-3 py-1 mb-6 bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold uppercase tracking-[0.2em] rounded-sm">
                     <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
-                    Currently Active
+                    {t('atWork')}
                   </span>
                 ) : (
                   <span className="inline-flex px-3 py-1 mb-6 bg-white/5 border border-white/10 text-white/40 text-[10px] font-bold uppercase tracking-[0.2em] rounded-sm">
-                    Completed Project
+                    {t('completed')}
                   </span>
                 )}
 
@@ -344,7 +312,7 @@ export const SelectedWorkSection: React.FC = () => {
 
                 {/* Highlight */}
                 <div className="mt-12 pt-8 border-t border-white/10">
-                  <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/30 mb-4 block font-bold">Key Result</span>
+                  <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/30 mb-4 block font-bold">{t('keyImpact')}</span>
                   <p className={`text-2xl md:text-3xl font-bold tracking-tight ${
                     openProject.status === 'active' ? 'text-emerald-400' : 'text-accent'
                   }`}>

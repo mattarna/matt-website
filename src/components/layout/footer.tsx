@@ -1,11 +1,28 @@
 'use client';
 
-import React from 'react';
+import React, { useTransition } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
+import { usePathname } from 'next/navigation';
+import { useLocale, useTranslations } from 'next-intl';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const [isPending, startTransition] = useTransition();
+  const pathname = usePathname();
+  const locale = useLocale();
+  const t = useTranslations('footer');
+
+  const switchLocale = (newLocale: string) => {
+    if (newLocale === locale) return;
+    
+    startTransition(() => {
+      // Get the path without the current locale prefix
+      const currentPath = pathname.replace(`/${locale}`, '') || '/';
+      // Navigate to the new locale path
+      window.location.href = `/${newLocale}${currentPath === '/' ? '' : currentPath}`;
+    });
+  };
 
   return (
     <footer className="relative bg-[#354BB5] py-20 md:py-32 overflow-hidden border-t border-white/20">
@@ -28,7 +45,7 @@ export const Footer: React.FC = () => {
                 MATT
               </h2>
               <span className="text-white/60 font-mono text-xs md:text-sm tracking-[0.5em] uppercase mt-4">
-                Strategic Infrastructure
+                {t('tagline')}
               </span>
             </motion.div>
 
@@ -40,9 +57,9 @@ export const Footer: React.FC = () => {
               className="group relative cursor-help"
             >
               <div className="flex flex-col items-end text-right">
-                <span className="text-[10px] uppercase tracking-[0.3em] text-white/60 mb-2">Useless Fact #42</span>
+                <span className="text-[10px] uppercase tracking-[0.3em] text-white/60 mb-2">{t('funFact')}</span>
                 <p className="text-white text-base md:text-lg italic max-w-[280px] group-hover:text-white transition-colors leading-relaxed">
-                  "This website was built faster than it takes to explain AI to my grandma."
+                  {t('funFactText')}
                 </p>
                 <div className="mt-4 flex gap-1">
                   {[1, 2, 3, 4, 5].map((i) => (
@@ -58,7 +75,7 @@ export const Footer: React.FC = () => {
             
             {/* Contacts */}
             <div className="flex flex-col gap-6">
-              <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/60 font-bold">Direct</span>
+              <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/60 font-bold">{t('direct')}</span>
               <a href="mailto:hello@morfeushub.com" className="text-white text-lg font-bold hover:text-white/70 transition-opacity">hello@morfeushub.com</a>
               <div className="flex flex-col gap-3">
                 <a href="https://linkedin.com/in/marnaboldi" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors text-sm uppercase tracking-widest font-medium">LinkedIn</a>
@@ -69,7 +86,7 @@ export const Footer: React.FC = () => {
 
             {/* Location */}
             <div className="flex flex-col gap-6">
-              <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/60 font-bold">Base</span>
+              <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/60 font-bold">{t('base')}</span>
               <p className="text-white/90 text-base leading-relaxed">
                 45.4642° N, 9.1900° E<br />
                 Milano, Italy
@@ -78,22 +95,22 @@ export const Footer: React.FC = () => {
 
             {/* Status */}
             <div className="flex flex-col gap-6">
-              <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/60 font-bold">Operating Status</span>
+              <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/60 font-bold">{t('status')}</span>
               <div className="flex items-center gap-3">
                 <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_10px_rgba(52,211,153,0.5)]" />
-                <span className="text-white font-bold text-sm uppercase tracking-widest">Currently Scaling</span>
+                <span className="text-white font-bold text-sm uppercase tracking-widest">{t('statusText')}</span>
               </div>
             </div>
 
             {/* Funny Button / CTA */}
             <div className="flex flex-col md:items-end gap-6">
-              <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/60 font-bold">Don't Click This</span>
+              <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/60 font-bold">{t('dontClick')}</span>
               <Link href="/self-destruct">
                 <motion.div 
                   whileTap={{ scale: 0.95 }}
                   className="px-6 py-3 border border-white/40 text-white/80 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-white hover:text-[#354BB5] transition-all duration-500 cursor-pointer"
                 >
-                  Self-Destruct
+                  {t('selfDestruct')}
                 </motion.div>
               </Link>
             </div>
@@ -101,16 +118,35 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* BOTTOM SECTION: LEGAL & CREDITS */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-12 text-[9px] uppercase tracking-[0.5em] text-white/40">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-12 pt-12 text-[9px] uppercase tracking-[0.5em] text-white/40">
             <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-center">
               <span>© {currentYear} Matteo Arnaboldi</span>
               <span className="font-mono">P.IVA 12184310961</span>
             </div>
-            <div className="flex gap-8">
-              <span className="hover:text-white/60 cursor-default">Privacy Policy</span>
-              <span className="hover:text-white/60 cursor-default">Cookie Policy</span>
+
+            {/* Language Switcher in Footer */}
+            <div className="flex items-center gap-4 bg-black/20 rounded-full p-1.5 border border-white/5">
+              {['it', 'en'].map((l) => (
+                <button
+                  key={l}
+                  onClick={() => switchLocale(l)}
+                  disabled={isPending || locale === l}
+                  className={`px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-[0.3em] transition-all duration-500 ${
+                    locale === l 
+                      ? 'bg-white text-[#354BB5]' 
+                      : 'text-white/30 hover:text-white/60'
+                  } ${isPending ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+                >
+                  {l === 'it' ? 'Italiano' : 'English'}
+                </button>
+              ))}
             </div>
-            <span className="italic">Built with AI & Espresso</span>
+
+            <div className="flex gap-8">
+              <span className="hover:text-white/60 cursor-default">{t('privacy')}</span>
+              <span className="hover:text-white/60 cursor-default">{t('cookie')}</span>
+            </div>
+            <span className="italic">{t('builtWith')}</span>
           </div>
 
         </div>

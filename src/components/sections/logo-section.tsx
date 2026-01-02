@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 const logos = [
   '/loghi-matt (1).png',
@@ -20,6 +21,8 @@ const logos = [
 ];
 
 export const LogoSection: React.FC = () => {
+  const t = useTranslations('logos');
+
   return (
     <section className="relative bg-[#354BB5] py-28 md:py-36 overflow-hidden">
       {/* SECTION HEADER - Monumental & Bolder */}
@@ -31,10 +34,10 @@ export const LogoSection: React.FC = () => {
           className="flex flex-col items-center gap-6"
         >
           <h4 className="text-white text-3xl md:text-5xl lg:text-6xl font-black tracking-tight uppercase">
-            Name-dropping, <span className="italic font-light opacity-80 font-serif normal-case">briefly</span>
+            {t('title')} <span className="italic font-light opacity-80 font-serif normal-case">{t('titleItalic')}</span>
           </h4>
           <p className="text-white/50 text-xs md:text-sm lg:text-base uppercase tracking-[0.5em] font-bold max-w-xl leading-relaxed">
-            It&apos;s the past. Not that important, but people seem to care
+            {t('subtitle')}
           </p>
         </motion.div>
       </div>
@@ -47,9 +50,9 @@ export const LogoSection: React.FC = () => {
 
         <motion.div 
           className="flex items-center gap-24 md:gap-48 whitespace-nowrap"
-          animate={{ x: [0, -2500] }} // Adjusted for larger content
+          animate={{ x: [0, -2500] }}
           transition={{ 
-            duration: 30, // Slightly faster for bigger scale
+            duration: 30,
             repeat: Infinity, 
             ease: "linear" 
           }}

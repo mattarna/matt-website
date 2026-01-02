@@ -3,20 +3,22 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
-
-const sections = [
-  { id: 'hero', label: 'Start' },
-  { id: 'principles', label: 'Principles' },
-  { id: 'expertise', label: 'Operating Model' },
-  { id: 'work', label: 'Selected Work' },
-  { id: 'manifesto', label: 'Manifesto' },
-  { id: 'qualification', label: 'Engagement' },
-  { id: 'contact', label: 'Contact' },
-];
+import { useTranslations } from 'next-intl';
 
 export const SilentNavigation: React.FC = () => {
   const [activeSection, setActiveSection] = useState('hero');
   const [isVisible, setIsVisible] = useState(false);
+  const t = useTranslations('navigation');
+
+  const sections = [
+    { id: 'hero', label: t('start') },
+    { id: 'principles', label: t('principles') },
+    { id: 'expertise', label: t('expertise') },
+    { id: 'work', label: t('work') },
+    { id: 'manifesto', label: t('manifesto') },
+    { id: 'qualification', label: t('qualification') },
+    { id: 'contact', label: t('contact') },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +42,7 @@ export const SilentNavigation: React.FC = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [sections]);
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -104,4 +106,3 @@ export const SilentNavigation: React.FC = () => {
     </AnimatePresence>
   );
 };
-

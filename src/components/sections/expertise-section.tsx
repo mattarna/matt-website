@@ -2,71 +2,36 @@
 
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
-const expertiseData = [
-  {
-    id: '01',
-    title: 'Company Building',
-    description: 'I help founders turn complexity into clear direction, ownership, and durable execution. Scaling a business requires more than just energy; it requires a repeatable operating cadence that reduces cognitive load and empowers teams.',
-    bullets: [
-      'Decision design and strategic prioritization',
-      'Operating cadence and leadership accountability',
-      'Strategy translated into clear execution systems',
-      'Organizational design for high-growth environments',
-      'Standard Operating Procedures (SOPs) for scalability'
-    ],
-    image: '/Background (6).webp'
-  },
-  {
-    id: '02',
-    title: 'AI Systems',
-    description: 'I integrate AI where it improves decisions and operations, without creating fragility. AI should not be a gimmick; it must be a structural leverage point that enhances human capability and operational efficiency.',
-    bullets: [
-      'Practical workflow and process automation design',
-      'Internal knowledge systems and leverage architecture',
-      'Custom AI guardrails, governance, and adoption',
-      'Integration of LLMs into core business functions',
-      'AI-driven data analysis for strategic insights'
-    ],
-    image: '/Background (7).webp'
-  },
-  {
-    id: '03',
-    title: 'Growth Systems',
-    description: 'I build demand and growth systems that perform without burning the brand or the team. Performance marketing is not just about spending; it is about building an acquisition architecture that scales with predictable ROI.',
-    bullets: [
-      'Strategic demand and positioning mechanics',
-      'End-to-end funnel and lifecycle architecture',
-      'Performance loops and advanced measurement',
-      'Multi-channel acquisition and scaling strategies',
-      'Brand-consistent growth optimization'
-    ],
-    image: '/Background (8).webp'
-  }
-];
+interface ExpertiseArea {
+  id: string;
+  title: string;
+  description: string;
+  bullets: string[];
+  image: string;
+}
 
 const ScrollingImage = ({ 
   data, 
   index, 
-  progress 
+  progress,
+  totalItems
 }: { 
-  data: typeof expertiseData[0]; 
+  data: ExpertiseArea; 
   index: number; 
   progress: any;
+  totalItems: number;
 }) => {
-  // We divide the 1.0 progress into 3 parts (0.33 each)
-  const segment = 1 / expertiseData.length;
+  const segment = 1 / totalItems;
   const startTransition = index * segment;
   
-  // The transition starts a bit before the segment and ends a bit after 
-  // to make it feel like it takes "some scroll notches"
   const y = useTransform(
     progress,
     [startTransition - 0.15, startTransition + 0.15],
     ["100%", "0%"]
   );
 
-  // First image is the base, always at 0
   if (index === 0) {
     return (
       <div className="absolute inset-0 z-0">
@@ -101,6 +66,17 @@ export const ExpertiseSection: React.FC = () => {
     target: containerRef,
     offset: ["start start", "end end"]
   });
+  const t = useTranslations('expertise');
+
+  const images = ['/Background (6).webp', '/Background (7).webp', '/Background (8).webp'];
+
+  const expertiseData: ExpertiseArea[] = [0, 1, 2].map((i) => ({
+    id: t(`areas.${i}.id`),
+    title: t(`areas.${i}.title`),
+    description: t(`areas.${i}.description`),
+    bullets: [0, 1, 2, 3, 4].map((j) => t(`areas.${i}.bullets.${j}`)),
+    image: images[i]
+  }));
 
   return (
     <section id="expertise" ref={containerRef} className="relative bg-[#354BB5] py-24 md:py-32">
@@ -124,14 +100,13 @@ export const ExpertiseSection: React.FC = () => {
         >
           <div className="flex items-center gap-4 mb-6">
              <div className="h-[1px] w-8 bg-white/40" />
-             <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/80 font-bold">Operating Model</span>
+             <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/80 font-bold">{t('label')}</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-extrabold text-white tracking-tighter leading-tight uppercase">
-            Strategic Operating Model
+            {t('title')}
           </h2>
           <p className="mt-6 text-lg text-white/60 max-w-xl leading-relaxed">
-            Systems designed to turn complexity into clear direction and durable growth. 
-            Built for environments where decisions carry real weight.
+            {t('subtitle')}
           </p>
         </motion.div>
 
@@ -196,7 +171,8 @@ export const ExpertiseSection: React.FC = () => {
                       key={data.id} 
                       data={data} 
                       index={index} 
-                      progress={scrollYProgress} 
+                      progress={scrollYProgress}
+                      totalItems={expertiseData.length}
                     />
                   ))}
                 </div>

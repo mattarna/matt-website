@@ -1,7 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useTransition } from 'react';
 import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
+import { useLocale, useTranslations } from 'next-intl';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -34,6 +36,38 @@ const glowVariants = {
 };
 
 export const HeroSection: React.FC = () => {
+  const [isPending, startTransition] = useTransition();
+  const pathname = usePathname();
+  const locale = useLocale();
+  const t = useTranslations('hero');
+
+  const switchLocale = (newLocale: string) => {
+    if (newLocale === locale) return;
+    
+    startTransition(() => {
+      // Get the path without the current locale prefix
+      const currentPath = pathname.replace(`/${locale}`, '') || '/';
+      // Navigate to the new locale path
+      window.location.href = `/${newLocale}${currentPath === '/' ? '' : currentPath}`;
+    });
+  };
+
+  const scrollToContact = () => {
+    const el = document.getElementById('contact');
+    if (el) {
+      window.scrollTo({
+        top: el.offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const pillars = [
+    { id: '01', label: t('pillar1') },
+    { id: '02', label: t('pillar2') },
+    { id: '03', label: t('pillar3') }
+  ];
+
   return (
     <section id="hero" className="relative flex h-screen w-full flex-col overflow-hidden bg-[#050508]">
       
@@ -57,7 +91,7 @@ export const HeroSection: React.FC = () => {
             loop
             muted
             playsInline
-            className="h-[80vh] w-auto max-w-none object-contain mix-blend-screen"
+            className="h-[95vh] w-auto max-w-none object-contain mix-blend-screen"
           >
             <source src="/VIDEO MATT 2.mp4" type="video/mp4" />
           </video>
@@ -76,21 +110,41 @@ export const HeroSection: React.FC = () => {
           {/* LEFT: NAME */}
           <motion.div variants={itemVariants} className="flex flex-col">
             <h1 className="text-[16vw] md:text-[12vw] lg:text-[10vw] font-black leading-[0.85] tracking-[-0.04em] text-white uppercase">
-              MATT
+              {t('name')}
             </h1>
             <span className="mt-2 text-[3vw] md:text-[1.8vw] lg:text-[1.2vw] font-medium tracking-[0.4em] text-white/50 uppercase">
-              Arnaboldi
+              {t('surname')}
             </span>
           </motion.div>
 
-          {/* RIGHT: STATUS */}
-          <motion.div variants={itemVariants} className="flex flex-col items-end pt-2">
-            <span className="font-mono text-xs md:text-sm font-bold uppercase tracking-[0.6em] text-accent">
-              Strategic Operator
-            </span>
-            <span className="font-mono mt-1 text-[10px] md:text-xs uppercase tracking-[0.4em] text-white/40 font-bold">
-              Founder & Builder
-            </span>
+          {/* RIGHT: STATUS & LANG */}
+          <motion.div variants={itemVariants} className="flex flex-col items-end pt-2 gap-6">
+            <div className="flex flex-col items-end">
+              <span className="font-mono text-xs md:text-sm font-bold uppercase tracking-[0.6em] text-accent">
+                {t('role')}
+              </span>
+              <span className="font-mono mt-1 text-[10px] md:text-xs uppercase tracking-[0.4em] text-white/40 font-bold">
+                {t('subrole')}
+              </span>
+            </div>
+
+            {/* LANGUAGE TOGGLE - Hero Version */}
+            <div className="pointer-events-auto flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 p-1 rounded-sm">
+              {['it', 'en'].map((l) => (
+                <button
+                  key={l}
+                  onClick={() => switchLocale(l)}
+                  disabled={isPending || locale === l}
+                  className={`px-3 py-1 text-[9px] font-black uppercase tracking-widest transition-all duration-500 ${
+                    locale === l 
+                      ? 'bg-accent text-white shadow-[0_0_15px_rgba(53,75,181,0.3)]' 
+                      : 'text-white/20 hover:text-white/50'
+                  } ${isPending ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+                >
+                  {l}
+                </button>
+              ))}
+            </div>
           </motion.div>
         </div>
 
@@ -99,11 +153,7 @@ export const HeroSection: React.FC = () => {
           variants={itemVariants} 
           className="absolute left-8 md:left-12 lg:left-16 top-1/2 -translate-y-1/2 flex flex-col gap-10 md:gap-12"
         >
-          {[
-            { id: '01', label: 'Entrepreneur' },
-            { id: '02', label: 'AI Systems' },
-            { id: '03', label: 'Performance Marketing' }
-          ].map((pillar) => (
+          {pillars.map((pillar) => (
             <div key={pillar.id} className="flex flex-col gap-2 group pointer-events-auto cursor-pointer">
               <div className="flex items-center gap-3">
                 <span className="font-mono text-xs text-accent group-hover:translate-x-1 transition-transform">{pillar.id}</span>
@@ -124,7 +174,7 @@ export const HeroSection: React.FC = () => {
               45.4642° N, 9.1900° E
             </span>
             <span className="text-xs md:text-sm font-semibold text-white/50 tracking-[0.3em] uppercase">
-              Milano, Italy
+              {t('location')}
             </span>
             <span className="font-mono text-2xl md:text-3xl font-light text-white/15 italic mt-1">
               2026
@@ -137,7 +187,7 @@ export const HeroSection: React.FC = () => {
             className="absolute bottom-8 md:bottom-12 lg:bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
           >
             <span className="font-mono text-[10px] md:text-xs font-bold uppercase tracking-[0.6em] text-white/30">
-              Scroll
+              {t('scroll')}
             </span>
             <motion.div 
               animate={{ y: [0, 12, 0], opacity: [0.3, 1, 0.3] }}
@@ -146,15 +196,24 @@ export const HeroSection: React.FC = () => {
             />
           </motion.div>
 
-          {/* RIGHT: TAGLINE */}
-          <motion.div variants={itemVariants} className="flex flex-col items-end gap-3 max-w-md">
+          {/* RIGHT: TAGLINE & CTA */}
+          <motion.div variants={itemVariants} className="flex flex-col items-end gap-12 max-w-md">
             <p className="text-right text-lg md:text-xl lg:text-2xl font-light text-white/60 leading-relaxed tracking-wide">
-              Turning complexity into
-              <span className="text-white font-medium"> clarity</span>,
+              {t('tagline1')}
+              <span className="text-white font-medium"> {t('taglineHighlight1')}</span>,
               <br />
-              and clarity into
-              <span className="text-accent font-medium"> systems that work</span>.
+              {t('tagline2')}
+              <span className="text-accent font-medium"> {t('taglineHighlight2')}</span>.
             </p>
+
+            {/* INTEGRATED CTA BUTTON */}
+            <button
+              onClick={scrollToContact}
+              className="pointer-events-auto group flex items-center gap-6 px-10 py-5 bg-white text-black font-black uppercase tracking-[0.4em] text-[10px] md:text-xs transition-all duration-500 hover:bg-accent hover:text-white rounded-sm shadow-2xl"
+            >
+              <span>{t('cta')}</span>
+              <span className="text-lg transition-transform duration-500 group-hover:translate-x-2">→</span>
+            </button>
           </motion.div>
         </div>
       </motion.div>

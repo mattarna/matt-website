@@ -2,8 +2,11 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 export const CTASection: React.FC = () => {
+  const t = useTranslations('cta');
+
   return (
     <section id="contact" className="relative bg-[#050508] py-32 md:py-48 lg:py-64 overflow-hidden">
       {/* Grid Background Overlay */}
@@ -33,9 +36,13 @@ export const CTASection: React.FC = () => {
             className="mb-12 md:mb-16"
           >
             <p className="text-xl md:text-2xl lg:text-3xl text-white/40 font-light leading-relaxed tracking-tight max-w-4xl mx-auto italic">
-              I don&apos;t take on many personal projects. 
-              <br className="hidden md:block" />
-              I typically engage through <span className="text-white/60">1:1 mentorship</span>, <span className="text-white/60">strategic consulting</span>, or as a <span className="text-white/60">long-term operator</span> for founders.
+              {t('context').split(t('mentorship'))[0]}
+              <span className="text-white/60">{t('mentorship')}</span>
+              {t('context').split(t('mentorship'))[1]?.split(t('consulting'))[0]}
+              <span className="text-white/60">{t('consulting')}</span>
+              {t('context').split(t('consulting'))[1]?.split(t('operator'))[0]}
+              <span className="text-white/60">{t('operator')}</span>
+              {t('context').split(t('operator'))[1]}
             </p>
           </motion.div>
 
@@ -48,7 +55,7 @@ export const CTASection: React.FC = () => {
             className="mb-16 md:mb-24"
           >
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tighter leading-[0.85] mb-12 drop-shadow-2xl">
-              Facing real<br />complexity?<br /><span className="italic">Let&apos;s talk.</span>
+              {t('title1')}<br />{t('title2')}<br /><span className="italic">{t('title3')}</span>
             </h2>
           </motion.div>
 
@@ -68,7 +75,7 @@ export const CTASection: React.FC = () => {
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center gap-8 px-16 py-8 bg-white text-black font-black uppercase tracking-[0.3em] text-sm md:text-lg hover:bg-[#354BB5] hover:text-white transition-all duration-700 rounded-sm relative overflow-hidden group shadow-2xl"
               >
-                <span className="relative z-10">Start a conversation</span>
+                <span className="relative z-10">{t('button')}</span>
                 <span className="relative z-10 text-2xl transition-transform duration-500 group-hover:translate-x-2">→</span>
                 <div className="absolute inset-0 bg-[#354BB5] translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[0.16, 1, 0.3, 1]" />
               </motion.a>
@@ -94,7 +101,7 @@ export const CTASection: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#FF6B00]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                 
                 <div className="relative z-10 flex flex-col items-start gap-6 w-full">
-                  <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/30 group-hover:text-[#FF6B00] transition-colors font-bold">Join the newsletter</span>
+                  <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/30 group-hover:text-[#FF6B00] transition-colors font-bold">{t('newsletterLabel')}</span>
                   <div className="flex items-center justify-between w-full">
                     <span className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight">AI Espresso</span>
                     <span className="text-xl opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-700 text-[#FF6B00]">→</span>
@@ -114,7 +121,7 @@ export const CTASection: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                 
                 <div className="relative z-10 flex flex-col items-start gap-6 w-full">
-                  <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/30 group-hover:text-accent transition-colors font-bold">Daily Insights</span>
+                  <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/30 group-hover:text-accent transition-colors font-bold">{t('linkedinLabel')}</span>
                   <div className="flex items-center justify-between w-full">
                     <span className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight">LinkedIn</span>
                     <span className="text-xl opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-700 text-accent">→</span>

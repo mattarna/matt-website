@@ -1,18 +1,35 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useTransition } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const navLinks = [
-  { id: 'principles', label: 'Principles', num: '01' },
-  { id: 'expertise', label: 'Expertise', num: '02' },
-  { id: 'work', label: 'Work', num: '03' },
-  { id: 'manifesto', label: 'Manifesto', num: '04' },
-];
+import { usePathname } from 'next/navigation';
+import { useLocale, useTranslations } from 'next-intl';
 
 export const Header: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isPending, startTransition] = useTransition();
+  const pathname = usePathname();
+  const locale = useLocale();
+  const t = useTranslations('header');
+
+  const navLinks = [
+    { id: 'principles', label: t('principles'), num: '01' },
+    { id: 'expertise', label: t('expertise'), num: '02' },
+    { id: 'work', label: t('work'), num: '03' },
+    { id: 'manifesto', label: t('manifesto'), num: '04' },
+  ];
+
+  const switchLocale = (newLocale: string) => {
+    if (newLocale === locale) return;
+    
+    startTransition(() => {
+      // Get the path without the current locale prefix
+      const currentPath = pathname.replace(`/${locale}`, '') || '/';
+      // Navigate to the new locale path
+      window.location.href = `/${newLocale}${currentPath === '/' ? '' : currentPath}`;
+    });
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -80,7 +97,7 @@ export const Header: React.FC = () => {
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_10px_rgba(52,211,153,0.5)]" />
                 <span className="font-mono text-[9px] uppercase tracking-widest text-white/40 hidden md:block">
-                  SYS_ACTIVE
+                  {t('status')}
                 </span>
               </div>
             </button>
@@ -109,13 +126,31 @@ export const Header: React.FC = () => {
             {/* DIVIDER */}
             <div className="h-7 w-px bg-white/15 hidden md:block" />
 
+            {/* LANGUAGE TOGGLE */}
+            <div className="flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/10">
+              {['it', 'en'].map((l) => (
+                <button
+                  key={l}
+                  onClick={() => switchLocale(l)}
+                  disabled={isPending || locale === l}
+                  className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest transition-all duration-500 ${
+                    locale === l 
+                      ? 'bg-accent text-white shadow-lg shadow-accent/20' 
+                      : 'text-white/30 hover:text-white/60'
+                  } ${isPending ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+                >
+                  {l}
+                </button>
+              ))}
+            </div>
+
             {/* RIGHT: CTA */}
             <button
               onClick={() => scrollToSection('contact')}
               className="flex items-center gap-3 px-6 py-2.5 bg-white/5 hover:bg-accent border border-white/15 hover:border-accent rounded-full transition-all duration-500 group"
             >
               <span className="font-mono text-sm uppercase tracking-[0.15em] text-white/90 group-hover:text-white font-bold">
-                Contact
+                {t('contact')}
               </span>
               <span className="text-sm text-white/50 group-hover:text-white group-hover:translate-x-1 transition-all duration-500">
                 →
