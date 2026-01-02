@@ -3,6 +3,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 interface ExpertiseArea {
   id: string;
@@ -35,10 +36,13 @@ const ScrollingImage = ({
   if (index === 0) {
     return (
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src={data.image}
           alt={data.title}
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          priority={index === 0}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
       </div>
@@ -50,10 +54,12 @@ const ScrollingImage = ({
       style={{ y, zIndex: index }}
       className="absolute inset-0 overflow-hidden bg-[#354BB5]"
     >
-      <img
+      <Image
         src={data.image}
         alt={data.title}
-        className="w-full h-full object-cover"
+        fill
+        className="object-cover"
+        sizes="(max-width: 1024px) 100vw, 50vw"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
     </motion.div>
@@ -89,29 +95,82 @@ export const ExpertiseSection: React.FC = () => {
         }} 
       />
 
-      <div className="container relative z-10 mx-auto px-8 md:px-16 lg:px-24">
+      <div className="container relative z-10 mx-auto px-6 md:px-16 lg:px-24">
         
         {/* SECTION HEADER */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-20 md:mb-32 max-w-3xl"
+          className="mb-16 md:mb-32 max-w-3xl"
         >
           <div className="flex items-center gap-4 mb-6">
-             <div className="h-[1px] w-8 bg-white/40" />
-             <span className="font-mono text-xs md:text-sm uppercase tracking-[0.6em] text-white/80 font-bold">{t('label')}</span>
+             <div className="h-[1px] w-6 md:w-8 bg-white/40" />
+             <span className="font-mono text-[10px] md:text-sm uppercase tracking-[0.4em] md:tracking-[0.6em] text-white/80 font-bold">{t('label')}</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-extrabold text-white tracking-tighter leading-tight uppercase">
+          <h2 className="text-3xl md:text-6xl font-extrabold text-white tracking-tighter leading-tight uppercase">
             {t('title')}
           </h2>
-          <p className="mt-6 text-lg text-white/60 max-w-xl leading-relaxed">
+          <p className="mt-4 md:mt-6 text-base md:text-lg text-white/60 max-w-xl leading-relaxed">
             {t('subtitle')}
           </p>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row items-start justify-center gap-12 lg:gap-24">
-          
+        {/* MOBILE LAYOUT: STACKED */}
+        <div className="flex flex-col lg:hidden gap-20">
+          {expertiseData.map((data) => (
+            <motion.div
+              key={data.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col gap-10"
+            >
+              <div className="relative w-full aspect-square rounded-sm overflow-hidden border border-white/10 shadow-2xl">
+                <Image 
+                  src={data.image} 
+                  alt={data.title} 
+                  fill 
+                  className="object-cover" 
+                  sizes="100vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+              </div>
+
+              <div className="flex flex-col">
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="font-mono text-sm font-bold text-white/40 tracking-widest">
+                    {data.id}
+                  </span>
+                  <div className="h-px w-8 bg-white/20" />
+                </div>
+                
+                <h3 className="text-3xl md:text-5xl font-extrabold text-white tracking-tighter mb-6 leading-none uppercase">
+                  {data.title}
+                </h3>
+                
+                <p className="text-base md:text-xl text-white/60 leading-relaxed mb-10">
+                  {data.description}
+                </p>
+                
+                <div className="flex flex-col gap-4">
+                  {data.bullets.map((bullet, i) => (
+                    <div key={i} className="flex items-start gap-4 group">
+                      <span className="text-white/40 text-xs mt-1.5 font-mono">▶</span>
+                      <span className="text-sm md:text-lg text-white/80 tracking-tight font-bold uppercase transition-colors">
+                        {bullet}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* DESKTOP LAYOUT: STICKY SCROLL */}
+        <div className="hidden lg:flex flex-row items-start justify-center gap-24">
           {/* LEFT SIDE: SCROLLING TEXT CONTENT */}
           <div className="flex-[1.2] flex flex-col">
             {expertiseData.map((data) => (
@@ -153,10 +212,9 @@ export const ExpertiseSection: React.FC = () => {
           </div>
 
           {/* RIGHT SIDE: STICKY IMAGE */}
-          <div className="hidden lg:block flex-1 h-screen sticky top-0">
+          <div className="flex-1 h-screen sticky top-0">
             <div className="h-full flex items-center justify-center">
               <div className="relative w-full aspect-square max-w-[600px]">
-                
                 {/* Abstract decorative elements */}
                 <div className="absolute -top-6 -right-6 grid grid-cols-3 gap-2 opacity-20 z-20">
                   {Array.from({ length: 9 }).map((_, i) => (
@@ -179,7 +237,6 @@ export const ExpertiseSection: React.FC = () => {
               </div>
             </div>
           </div>
-
         </div>
       </div>
 

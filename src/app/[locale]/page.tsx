@@ -7,6 +7,7 @@ import { ManifestoSection } from '@/components/sections/manifesto-section';
 import { QualificationSection } from '@/components/sections/qualification-section';
 import { CTASection } from '@/components/sections/cta-section';
 import React from 'react';
+import { getTranslations } from 'next-intl/server';
 
 interface HomeProps {
   params: Promise<{ locale: string }>;
@@ -14,19 +15,44 @@ interface HomeProps {
 }
 
 export default async function Home({ params }: HomeProps) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'common' });
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Matteo Arnaboldi",
+    "url": "https://matteoarnaboldi.com",
+    "jobTitle": "Strategic Operator & Entrepreneur",
+    "description": t('description'),
+    "sameAs": [
+      "https://linkedin.com/in/marnaboldi",
+      "https://youtube.com/@matteoarnaboldi"
+    ],
+    "knowsAbout": [
+      "Strategic Systems",
+      "AI Implementation",
+      "Performance Marketing",
+      "Entrepreneurship"
+    ]
+  };
 
   return (
-    <main className="flex flex-col">
-      <HeroSection />
-      <PrinciplesSection />
-      <ExpertiseSection />
-      <LogoSection />
-      <SelectedWorkSection />
-      <ManifestoSection />
-      <QualificationSection />
-      <CTASection />
-    </main>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <main className="flex flex-col">
+        <HeroSection />
+        <PrinciplesSection />
+        <ExpertiseSection />
+        <LogoSection />
+        <SelectedWorkSection />
+        <ManifestoSection />
+        <QualificationSection />
+        <CTASection />
+      </main>
+    </>
   );
 }

@@ -3,11 +3,14 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
 
 export const SilentNavigation: React.FC = () => {
   const [activeSection, setActiveSection] = useState('hero');
   const [isVisible, setIsVisible] = useState(false);
+  const locale = useLocale();
+  const pathname = usePathname();
   const t = useTranslations('navigation');
 
   const sections = [
@@ -47,10 +50,10 @@ export const SilentNavigation: React.FC = () => {
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
-      window.scrollTo({
-        top: el.offsetTop,
-        behavior: 'smooth'
-      });
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      // If on a subpage, redirect to home with hash
+      window.location.href = `/${locale}/#${id}`;
     }
   };
 

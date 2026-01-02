@@ -1,62 +1,65 @@
 {
   "common": {
     "title": "Matteo Arnaboldi | Sistemi Strategici",
-    "description": "Trasformo la complessità in chiarezza, e la chiarezza in sistemi che funzionano."
+    "description": "Trasformo la complessità in chiarezza, e la chiarezza in sistemi che funzionano.",
+    "keywords": "imprenditore, sistemi AI, performance marketing, operatore strategico, crescita aziendale, ingegneria dei sistemi, Matteo Arnaboldi",
+    "ogTitle": "Matteo Arnaboldi | Operatore Strategico & Founder",
+    "ogDescription": "Aiuto gli imprenditori a trasformare la complessità in chiarezza e la chiarezza in sistemi duraturi. Founder di Morfeus e AI Espresso."
   },
   "header": {
-    "principles": "Principi",
-    "expertise": "Competenze",
-    "work": "Lavori",
+    "principles": "Principles",
+    "expertise": "Expertise",
+    "work": "Work",
     "manifesto": "Manifesto",
-    "contact": "Contatto",
-    "status": "SIS_ATTIVO"
+    "contact": "Contact",
+    "status": "SYS_ACTIVE"
   },
   "navigation": {
-    "start": "Inizio",
-    "principles": "Principi",
-    "expertise": "Modello Operativo",
-    "work": "Lavori Selezionati",
+    "start": "Start",
+    "principles": "Principles",
+    "expertise": "Operating Model",
+    "work": "Selected Work",
     "manifesto": "Manifesto",
     "qualification": "Engagement",
-    "contact": "Contatto"
+    "contact": "Contact"
   },
   "hero": {
     "name": "MATT",
     "surname": "Arnaboldi",
-    "role": "Operatore Strategico",
-    "subrole": "Fondatore & Builder",
-    "pillar1": "Imprenditore",
-    "pillar2": "Sistemi AI",
+    "role": "Strategic Operator",
+    "subrole": "Founder & Builder",
+    "pillar1": "Entrepreneur",
+    "pillar2": "AI Systems",
     "pillar3": "Performance Marketing",
     "location": "Milano, Italia",
     "tagline1": "Trasformo la complessità in",
     "taglineHighlight1": "chiarezza",
     "tagline2": "e la chiarezza in",
     "taglineHighlight2": "sistemi che funzionano",
-    "cta": "Parliamone",
+    "cta": "Let's Connect",
     "scroll": "Scorri"
   },
   "principles": {
-    "label": "Principi",
-    "title": "Principi Operativi",
+    "label": "Principles",
+    "title": "Operating Principles",
     "subtitle": "Non slogan. Filtri per ogni decisione che prendo.",
     "list": [
-      "Non inseguo le mode. Costruisco ciò che dura.",
+      "Non inseguo i trend. Costruisco ciò che dura.",
       "La chiarezza è un atto etico contro la complessità.",
       "I sistemi devono elevare le persone, non sostituirle.",
       "La crescita senza fondamenta è solo debito futuro.",
       "L'innovazione ha valore solo quando diventa struttura utilizzabile.",
       "Verità e coraggio sono gli unici veri moltiplicatori nel business."
     ],
-    "commitmentLabel": "L'Impegno",
+    "commitmentLabel": "The Commitment",
     "commitmentQuote": "\"Tutto ciò che tocco deve lasciarlo meglio di come l'ho trovato.\"",
-    "midasTitle": "Il Nuovo Tocco di Mida",
+    "midasTitle": "The New Midas Touch",
     "midasDesc": "Un'ossessione per la qualità che trasforma il potenziale in valore duraturo.",
-    "signature": "Fondatore & Operatore"
+    "signature": "Founder & Operator"
   },
   "expertise": {
-    "label": "Modello Operativo",
-    "title": "Modello Operativo Strategico",
+    "label": "Operating Model",
+    "title": "Strategic Operating Model",
     "subtitle": "Sistemi progettati per trasformare la complessità in direzione chiara e crescita duratura. Costruiti per ambienti dove le decisioni hanno un peso reale.",
     "insight": "Costruisco infrastrutture che rendono l'eroismo opzionale. Il tuo team mi ringrazierà. I tuoi competitor no.",
     "areas": [
@@ -65,8 +68,8 @@
         "title": "Company Building",
         "description": "Aiuto i founder a trasformare la complessità in direzione chiara, ownership e execution duratura. Scalare un business richiede più che energia; richiede una cadenza operativa ripetibile che riduce il carico cognitivo e potenzia i team.",
         "bullets": [
-          "Design delle decisioni e prioritizzazione strategica",
-          "Cadenza operativa e accountability della leadership",
+          "Decision design e prioritizzazione strategica",
+          "Operating cadence e accountability della leadership",
           "Strategia tradotta in sistemi di esecuzione chiari",
           "Design organizzativo per ambienti ad alta crescita",
           "Standard Operating Procedures (SOP) per la scalabilità"
@@ -74,11 +77,11 @@
       },
       {
         "id": "02",
-        "title": "Sistemi AI",
+        "title": "AI Systems",
         "description": "Integro l'AI dove migliora le decisioni e le operazioni, senza creare fragilità. L'AI non deve essere un gadget; deve essere un punto di leva strutturale che potenzia le capacità umane e l'efficienza operativa.",
         "bullets": [
           "Design di automazione pratica di workflow e processi",
-          "Sistemi di conoscenza interni e architettura di leva",
+          "Internal knowledge systems e architettura di leva",
           "Guardrail AI personalizzati, governance e adozione",
           "Integrazione di LLM nelle funzioni core del business",
           "Analisi dati guidata dall'AI per insight strategici"
@@ -86,7 +89,7 @@
       },
       {
         "id": "03",
-        "title": "Sistemi di Crescita",
+        "title": "Growth Systems",
         "description": "Costruisco sistemi di domanda e crescita che performano senza bruciare il brand o il team. Il performance marketing non riguarda solo la spesa; riguarda costruire un'architettura di acquisizione che scala con ROI prevedibile.",
         "bullets": [
           "Meccaniche strategiche di domanda e posizionamento",
@@ -100,18 +103,18 @@
   },
   "logos": {
     "title": "Name-dropping,",
-    "titleItalic": "brevemente",
+    "titleItalic": "briefly",
     "subtitle": "È il passato. Non così importante, ma alla gente sembra interessare"
   },
   "work": {
     "label": "Portfolio",
-    "title": "Lavori Selezionati",
+    "title": "Selected Work",
     "subtitle": "Sistemi costruiti. Risultati consegnati. Alcuni dei progetti e collaborazioni degli ultimi 4 anni.",
-    "atWork": "In Corso",
-    "completed": "Archivio / Completato",
-    "sector": "Settore",
+    "atWork": "At Work",
+    "completed": "Archive",
+    "sector": "Sector",
     "timeline": "Timeline",
-    "keyImpact": "Impatto Chiave",
+    "keyImpact": "Key Result",
     "status": "Status",
     "projects": [
       {
@@ -127,17 +130,17 @@
       {
         "id": "morfeus",
         "title": "Morfeus",
-        "category": "Consulenza AI",
+        "category": "AI Consulting",
         "year": "2024",
         "status": "active",
         "highlight": "Implementazione AI per Aziende",
-        "metric": "Agenti AI Personalizzati",
+        "metric": "Custom AI Agents",
         "description": "Negli ultimi anni ho integrato l'intelligenza artificiale in modo estensivo nei progetti che guido — e i risultati sono stati rivoluzionari. Quel percorso ha portato alla nascita di Morfeus, un'impresa co-fondata con due partner.\n\nLa nostra visione: aiutare le aziende ad adottare l'AI in modo consapevole ed efficace, attraverso lo sviluppo di Agenti AI personalizzati e soluzioni su misura che risolvono davvero i problemi di business."
       },
       {
         "id": "automazione-vincente",
         "title": "Automazione Vincente",
-        "category": "Automazione & E-commerce",
+        "category": "Automation & E-commerce",
         "year": "2022",
         "status": "completed",
         "highlight": "Email Marketing Potenziato dall'AI",
@@ -177,28 +180,28 @@
     "structureHighlight": "struttura utilizzabile",
     "p4": "Lavoro come un operatore, non come uno spettatore. Dove la complessità è reale e le conseguenze esistono. Dove le decisioni non possono essere posticipate o mascherate come sperimentazione.",
     "operatorHighlight": "operatore",
-    "principle1": "La crescita senza fondamenta è debito.",
-    "principle2": "L'innovazione senza disciplina è rumore.",
-    "principle3": "I sistemi che non rispettano gli umani alla fine si rompono.",
+    "principle1": "Growth senza fondamenta è debito.",
+    "principle2": "Innovazione senza disciplina è rumore.",
+    "principle3": "Sistemi che non rispettano gli umani alla fine si rompono.",
     "closing": "Il vero vantaggio oggi non è muoversi più velocemente, ma decidere meglio. Costruire cose che durano. Lasciare persone, progetti e organizzazioni più forti di come li ho trovati.",
     "decidingHighlight": "decidere meglio",
-    "commitmentLabel": "L'Impegno",
-    "midasTitle": "Il Nuovo Tocco di Mida",
+    "commitmentLabel": "The Commitment",
+    "midasTitle": "The New Midas Touch",
     "midasQuote": "\"Tutto ciò che tocco deve lasciarlo meglio di prima.\"",
-    "meta1": "Sistemi Strategici",
-    "meta2": "Integrazione AI",
+    "meta1": "Strategic Systems",
+    "meta2": "AI Integration",
     "meta3": "10+ Anni di Esperienza"
   },
   "qualification": {
-    "label": "Qualificazione Engagement",
-    "title": "Lavorare Con Me",
+    "label": "Engagement Qualification",
+    "title": "Working With Me",
     "idealClient": "Founder e team di leadership che affrontano complessità reale. Business oltre la fase dell'idea. Ambienti dove le decisioni contano.",
     "realComplexity": "complessità reale",
     "decisionsMatter": "le decisioni contano",
     "pillars": [
       {
         "id": "01",
-        "title": "Operatore Strategico",
+        "title": "Strategic Operator",
         "desc": "Lavoro al fianco dei founder nella stanza dove si prendono le decisioni."
       },
       {
@@ -208,11 +211,11 @@
       },
       {
         "id": "03",
-        "title": "Moltiplicatore di Forza",
+        "title": "Force Multiplier",
         "desc": "Supporto ad alta leva durante fasi di trasformazione critica."
       }
     ],
-    "notFor": "Non per chi cerca scorciatoie, mode o esecuzione senza accountability.",
+    "notFor": "Non per chi cerca scorciatoie, trend o esecuzione senza accountability.",
     "closing": "Se questo risuona, sai dove trovarmi."
   },
   "cta": {
@@ -222,47 +225,47 @@
     "operator": "operatore a lungo termine",
     "title1": "Affronti una",
     "title2": "complessità reale?",
-    "title3": "Parliamone.",
-    "button": "Inizia una conversazione",
-    "newsletterLabel": "Iscriviti alla newsletter",
-    "linkedinLabel": "Insight Quotidiani"
+    "title3": "Let's talk.",
+    "button": "Let's Connect",
+    "newsletterLabel": "Join the newsletter",
+    "linkedinLabel": "Daily Insights"
   },
   "footer": {
-    "tagline": "Infrastruttura Strategica",
-    "funFact": "Fatto Inutile #42",
+    "tagline": "Strategic Infrastructure",
+    "funFact": "Useless Fact #42",
     "funFactText": "\"Questo sito è stato costruito più velocemente di quanto ci vuole a spiegare l'AI a mia nonna.\"",
-    "direct": "Contatto",
+    "direct": "Direct",
     "base": "Base",
-    "status": "Stato Operativo",
-    "statusText": "Attualmente in Scaling",
-    "dontClick": "Non Cliccare Questo",
-    "selfDestruct": "Autodistruzione",
+    "status": "Operating Status",
+    "statusText": "Currently Scaling",
+    "dontClick": "Don't Click This",
+    "selfDestruct": "Self-Destruct",
     "privacy": "Privacy Policy",
     "cookie": "Cookie Policy",
-    "builtWith": "Costruito con AI & Espresso"
+    "builtWith": "Built with AI & Espresso"
   },
   "notFound": {
-    "error": "[ERRORE_SISTEMA]",
-    "title1": "Settore",
-    "title2": "Non Trovato",
+    "error": "[SYSTEM_ERROR]",
+    "title1": "Sector",
+    "title2": "Not Found",
     "message": "Le coordinate che hai inserito non corrispondono a nessun sistema conosciuto. Fatti un espresso. Riprova.",
-    "returnButton": "Torna alla Base",
-    "reportButton": "Segnala Bug",
+    "returnButton": "Return to Base",
+    "reportButton": "Report Bug",
     "funFact": "Fun fact: Questa pagina ha richiesto più tempo per essere designata di quanto la maggior parte delle startup impiega per pivotare."
   },
   "selfDestruct": {
-    "protocol": "Protocollo di Sicurezza 000",
-    "title": "Sequenza di Autodistruzione",
+    "protocol": "Security Protocol 000",
+    "title": "Self-Destruct Sequence",
     "intro": "Ti avevano detto di non cliccare. L'infrastruttura è ora instabile. Ogni sistema, decisione e shot di espresso sta per essere de-materializzato.",
-    "initiateButton": "Inizia Sequenza",
-    "critical": "FAILURE CRITICO IMMINENTE",
-    "aborting": "INTERRUZIONE SEQUENZA...",
-    "cancelButton": "Annulla (Troppo tardi?)",
-    "stabilized": "Sistemi stabilizzati. Ritorno in sicurezza...",
+    "initiateButton": "Initiate Sequence",
+    "critical": "CRITICAL FAILURE IMMINENT",
+    "aborting": "ABORTING SEQUENCE...",
+    "cancelButton": "Cancel (Too late?)",
+    "stabilized": "Systems stabilized. Ritorno in sicurezza...",
     "log1": "Eliminazione cache \"ai-espresso\"...",
     "log2": "Scaricamento infrastruttura \"morfeus\"...",
     "log3": "Distruzione sistemi \"chiarezza\"...",
     "log4": "Scaricamento espresso nel vuoto...",
-    "log5": "WIPEOUT TOTALE RILEVATO"
+    "log5": "TOTAL WIPEOUT DETECTED"
   }
 }
