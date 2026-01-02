@@ -63,9 +63,9 @@ export async function generateMetadata({
       type: 'website',
       images: [
         {
-          url: '/og-image.png', // We'll need to make sure this exists or point to a valid image
-          width: 1200,
-          height: 630,
+          url: '/logo matteo.png',
+          width: 800,
+          height: 800,
           alt: t('ogTitle'),
         },
       ],
@@ -74,8 +74,8 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: t('ogTitle'),
       description: t('ogDescription'),
-      creator: '@matteoarnaboldi', // Replace if you have a different handle
-      images: ['/og-image.png'],
+      creator: '@matteoarnaboldi',
+      images: ['/logo matteo.png'],
     },
     robots: {
       index: true,
