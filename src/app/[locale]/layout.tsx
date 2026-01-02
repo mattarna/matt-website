@@ -43,9 +43,9 @@ export async function generateMetadata({
     authors: [{ name: 'Matteo Arnaboldi' }],
     metadataBase: new URL(baseUrl),
     icons: {
-      icon: '/logo matteo.png',
-      shortcut: '/logo matteo.png',
-      apple: '/logo matteo.png',
+      icon: '/logo-matteo.png',
+      shortcut: '/logo-matteo.png',
+      apple: '/logo-matteo.png',
     },
     alternates: {
       canonical: locale === 'it' ? '/' : `/${locale}`,
@@ -63,9 +63,9 @@ export async function generateMetadata({
       type: 'website',
       images: [
         {
-          url: '/logo matteo.png',
-          width: 800,
-          height: 800,
+          url: '/logo-matteo.png', // Updated to logo-matteo.png
+          width: 1200,
+          height: 630,
           alt: t('ogTitle'),
         },
       ],
@@ -75,7 +75,7 @@ export async function generateMetadata({
       title: t('ogTitle'),
       description: t('ogDescription'),
       creator: '@matteoarnaboldi',
-      images: ['/logo matteo.png'],
+      images: ['/logo-matteo.png'], // Updated to logo-matteo.png
     },
     robots: {
       index: true,

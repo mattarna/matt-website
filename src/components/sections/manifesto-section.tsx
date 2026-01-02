@@ -16,7 +16,7 @@ export const ManifestoSection: React.FC = () => {
         {/* DESKTOP BACKGROUND */}
         <div className="hidden md:block relative w-full h-full">
           <Image
-            src="/matt backgorund.png"
+            src="/matt-background.png"
             alt="Matteo Arnaboldi Desktop"
             fill
             className="object-cover object-center"
@@ -26,7 +26,7 @@ export const ManifestoSection: React.FC = () => {
         {/* MOBILE BACKGROUND */}
         <div className="block md:hidden relative w-full h-full">
           <Image
-            src="/Matt image (2).png"
+            src="/matt-image-2.png"
             alt="Matteo Arnaboldi Mobile"
             fill
             className="object-cover object-center"

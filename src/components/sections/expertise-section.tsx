@@ -74,7 +74,7 @@ export const ExpertiseSection: React.FC = () => {
   });
   const t = useTranslations('expertise');
 
-  const images = ['/Background (6).webp', '/Background (7).webp', '/Background (8).webp'];
+  const images = ['/background-6.webp', '/background-7.webp', '/background-8.webp'];
 
   const expertiseData: ExpertiseArea[] = [0, 1, 2].map((i) => ({
     id: t(`areas.${i}.id`),

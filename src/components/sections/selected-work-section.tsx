@@ -6,10 +6,10 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 const projectImages: Record<string, string> = {
-  'ai-espresso': '/AI Espresso.png',
+  'ai-espresso': '/ai-espresso.png',
   'morfeus': '/MORFEUS.png',
   'automazione-vincente': '/Automazione-vincente-image-backround-1536x1024.png',
-  'dsyre-school': '/DSYRE school.png',
+  'dsyre-school': '/dsyre-school.png',
   'lead-by-neo': '/LEAD-BY-NEO-1536x1024.png',
 };
 
