@@ -6,7 +6,6 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 const logos = [
-  '/loghi matt (1).png',
   '/loghi matt (2).png',
   '/loghi matt (3).png',
   '/loghi matt (4).png',
@@ -16,7 +15,6 @@ const logos = [
   '/loghi matt (8).png',
   '/loghi matt (9).png',
   '/loghi matt (10).png',
-  '/loghi matt (11).png',
 ];
 
 export const LogoSection: React.FC = () => {
@@ -59,19 +57,27 @@ export const LogoSection: React.FC = () => {
             ease: "linear",
           }}
         >
-          {doubledLogos.map((logo, index) => (
-            <div key={index} className="flex-shrink-0 flex items-center justify-center transition-all duration-700 hover:scale-110">
-              <div className="relative h-12 md:h-24 lg:h-32 w-48 md:w-72 lg:w-96">
-                <Image 
-                  src={logo} 
-                  alt="Partner Logo" 
-                  fill
-                  className="object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
-                  sizes="(max-width: 768px) 200px, (max-width: 1024px) 300px, 400px"
-                />
+          {doubledLogos.map((logo, index) => {
+            const isSpecialLogo = logo.includes('(5)') || logo.includes('(7)');
+            
+            return (
+              <div key={index} className="flex-shrink-0 flex items-center justify-center transition-all duration-700 hover:scale-110">
+                <div className="relative h-12 md:h-24 lg:h-32 w-48 md:w-72 lg:w-96">
+                  <Image 
+                    src={logo} 
+                    alt="Partner Logo" 
+                    fill
+                    className={`object-contain transition-opacity ${
+                      isSpecialLogo 
+                        ? 'brightness-150 contrast-125 grayscale' 
+                        : 'brightness-0 invert opacity-80 hover:opacity-100'
+                    }`}
+                    sizes="(max-width: 768px) 200px, (max-width: 1024px) 300px, 400px"
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </motion.div>
       </div>
 
