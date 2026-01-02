@@ -2,19 +2,19 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Syne, JetBrains_Mono } from 'next/font/google';
 import '../globals.css';
 import { Footer } from '@/components/layout/footer';
 import { ThemeProvider } from '@/components/theme-provider';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const syne = Syne({
   subsets: ['latin'],
+  variable: '--font-syne',
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const jetbrains = JetBrains_Mono({
   subsets: ['latin'],
+  variable: '--font-mono',
 });
 
 interface LocaleLayoutProps {
@@ -36,7 +36,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
+      <body className={`${syne.variable} ${jetbrains.variable} font-sans antialiased min-h-screen flex flex-col bg-[#030712]`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

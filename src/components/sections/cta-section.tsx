@@ -117,25 +117,6 @@ export const CTASection: React.FC = () => {
 
           </div>
 
-          {/* FINAL FOOTER METADATA */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.8, duration: 1 }}
-            className="mt-32 md:mt-48 flex flex-col md:flex-row items-center justify-between border-t border-white/5 pt-12 gap-8 md:gap-0"
-          >
-            <div className="flex flex-col items-center md:items-start gap-1 text-left">
-              <span className="text-[10px] uppercase tracking-[0.4em] text-white/20">Matteo Arnaboldi</span>
-              <span className="text-[10px] uppercase tracking-[0.4em] text-white/20">Entrepreneur & Strategic Operator</span>
-            </div>
-
-            <div className="flex flex-col items-center md:items-end gap-1 text-right">
-              <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-white/20">45.4642° N, 9.1900° E</span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-white/20">EST. 2026</span>
-            </div>
-          </motion.div>
-
         </div>
       </div>
 
