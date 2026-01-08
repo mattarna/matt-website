@@ -130,7 +130,6 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <GoogleTagManager gtmId="GTM-WVMKC24" />
       <head>
         <script
           type="application/ld+json"
@@ -138,6 +137,7 @@ export default async function LocaleLayout({
         />
       </head>
       <body className={`${syne.variable} ${jetbrains.variable} font-sans antialiased min-h-screen flex flex-col bg-[#030712]`}>
+        <GoogleTagManager gtmId="GTM-WVMKC24" />
         <PageLoader />
         <FilmGrain />
         <CustomCursor />
