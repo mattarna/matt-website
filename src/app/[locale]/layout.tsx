@@ -14,7 +14,7 @@ import { CustomCursor } from '@/components/ui/custom-cursor';
 import { CookieBanner } from '@/components/ui/cookie-banner';
 import { ContactForm } from '@/components/sections/contact-form';
 import { Metadata } from 'next';
-import { GoogleTagManager } from '@next/third-parties/google';
+import Script from 'next/script';
 
 const syne = Syne({
   subsets: ['latin'],
@@ -131,13 +131,40 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        {/* Favicon & Icons */}
+        <link rel="icon" href="/icon.png" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
+        
+        {/* Google Tag Manager */}
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-WVMKC24');
+            `,
+          }}
+        />
+        
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body className={`${syne.variable} ${jetbrains.variable} font-sans antialiased min-h-screen flex flex-col bg-[#030712]`}>
-        <GoogleTagManager gtmId="GTM-WVMKC24" />
+        {/* GTM Noscript */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WVMKC24"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         <PageLoader />
         <FilmGrain />
         <CustomCursor />
