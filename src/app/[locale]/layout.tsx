@@ -44,11 +44,6 @@ export async function generateMetadata({
     keywords: t('keywords'),
     authors: [{ name: 'Matteo Arnaboldi' }],
     metadataBase: new URL(baseUrl),
-    icons: {
-      icon: [{ url: '/icon.png', type: 'image/png' }],
-      shortcut: '/icon.png',
-      apple: [{ url: '/apple-icon.png', type: 'image/png' }],
-    },
     alternates: {
       canonical: locale === 'it' ? '/' : `/${locale}`,
       languages: {
