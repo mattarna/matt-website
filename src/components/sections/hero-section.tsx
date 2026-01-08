@@ -4,6 +4,8 @@ import React, { useTransition, useRef, useEffect } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
+import { useAppStore } from '@/lib/store';
+import { sendGTMEvent } from '@next/third-parties/google';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -41,6 +43,7 @@ export const HeroSection: React.FC = () => {
   const locale = useLocale();
   const t = useTranslations('hero');
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { openContactForm } = useAppStore();
 
   useEffect(() => {
     // Forza il play al montaggio per garantire l'autoplay su mobile
@@ -63,15 +66,18 @@ export const HeroSection: React.FC = () => {
       playVideo();
       document.removeEventListener('touchstart', handleGesture);
       document.removeEventListener('mousedown', handleGesture);
+      document.removeEventListener('scroll', handleGesture);
     };
 
-    document.addEventListener('touchstart', handleGesture);
-    document.addEventListener('mousedown', handleGesture);
+    document.addEventListener('touchstart', handleGesture, { passive: true });
+    document.addEventListener('mousedown', handleGesture, { passive: true });
+    document.addEventListener('scroll', handleGesture, { passive: true });
 
     return () => {
       clearTimeout(timeoutId);
       document.removeEventListener('touchstart', handleGesture);
       document.removeEventListener('mousedown', handleGesture);
+      document.removeEventListener('scroll', handleGesture);
     };
   }, []);
 
@@ -250,7 +256,15 @@ export const HeroSection: React.FC = () => {
 
             {/* INTEGRATED CTA BUTTON */}
             <button
-              onClick={scrollToContact}
+              onClick={() => {
+                openContactForm();
+                sendGTMEvent({
+                  event: 'cta_click',
+                  cta_location: 'hero',
+                  cta_text: t('cta'),
+                  destination: 'contact_form'
+                });
+              }}
               className="pointer-events-auto group flex items-center gap-6 px-8 md:px-10 py-4 md:py-5 bg-white text-black font-black uppercase tracking-[0.3em] md:tracking-[0.4em] text-[10px] md:text-xs transition-all duration-500 hover:bg-accent hover:text-white rounded-sm shadow-2xl"
             >
               <span>{t('cta')}</span>

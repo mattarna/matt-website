@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
+import { useAppStore } from '@/lib/store';
 
 export const Header: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -14,6 +15,7 @@ export const Header: React.FC = () => {
   const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations('header');
+  const { openContactForm } = useAppStore();
 
   const navLinks = [
     { id: 'principles', label: t('principles'), num: '01' },
@@ -172,7 +174,7 @@ export const Header: React.FC = () => {
                 </div>
 
                 <button
-                  onClick={() => scrollToSection('contact')}
+                  onClick={openContactForm}
                   className="flex items-center gap-3 px-6 py-2.5 bg-white/5 hover:bg-accent border border-white/15 hover:border-accent rounded-full transition-all duration-500 group"
                 >
                   <span className="font-mono text-sm uppercase tracking-[0.15em] text-white/90 group-hover:text-white font-bold">
@@ -198,7 +200,7 @@ export const Header: React.FC = () => {
 
               <div className="flex items-center gap-2">
                 <button
-                  onClick={() => scrollToSection('contact')}
+                  onClick={openContactForm}
                   className="px-5 py-2 bg-accent text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-[0_4px_15px_rgba(53,75,181,0.3)] flex items-center gap-2"
                 >
                   BOOK <span className="text-[12px] translate-y-[-1px]">↗</span>
@@ -264,7 +266,7 @@ export const Header: React.FC = () => {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 + navLinks.length * 0.1 }}
-                onClick={() => scrollToSection('contact')}
+                onClick={openContactForm}
                 className="flex items-center gap-6 group text-left"
               >
                 <span className="font-mono text-lg text-accent font-bold">

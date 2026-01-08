@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
+import { sendGTMEvent } from '@next/third-parties/google';
 
 export const CookieBanner: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,11 +24,19 @@ export const CookieBanner: React.FC = () => {
 
   const acceptCookies = () => {
     localStorage.setItem('cookie-consent', 'accepted');
+    sendGTMEvent({
+      event: 'cookie_consent_update',
+      consent_level: 'all'
+    });
     setIsVisible(false);
   };
 
   const declineCookies = () => {
     localStorage.setItem('cookie-consent', 'declined');
+    sendGTMEvent({
+      event: 'cookie_consent_update',
+      consent_level: 'necessary'
+    });
     setIsVisible(false);
   };
 
@@ -88,5 +97,7 @@ export const CookieBanner: React.FC = () => {
     </AnimatePresence>
   );
 };
+
+
 
 

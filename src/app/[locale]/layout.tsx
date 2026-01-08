@@ -12,7 +12,9 @@ import { FilmGrain } from '@/components/ui/film-grain';
 import { Header } from '@/components/layout/header';
 import { CustomCursor } from '@/components/ui/custom-cursor';
 import { CookieBanner } from '@/components/ui/cookie-banner';
+import { ContactForm } from '@/components/sections/contact-form';
 import { Metadata } from 'next';
+import { GoogleTagManager } from '@next/third-parties/google';
 
 const syne = Syne({
   subsets: ['latin'],
@@ -133,6 +135,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
+      <GoogleTagManager gtmId="GTM-WVMKC24" />
       <head>
         <script
           type="application/ld+json"
@@ -157,6 +160,7 @@ export default async function LocaleLayout({
             </main>
             <Footer />
             <CookieBanner />
+            <ContactForm />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

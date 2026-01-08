@@ -3,9 +3,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { useAppStore } from '@/lib/store';
+import { sendGTMEvent } from '@next/third-parties/google';
 
 export const CTASection: React.FC = () => {
   const t = useTranslations('cta');
+  const { openContactForm } = useAppStore();
 
   return (
     <section id="contact" className="relative bg-[#050508] py-24 md:py-48 lg:py-64 overflow-hidden">
@@ -70,10 +73,16 @@ export const CTASection: React.FC = () => {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="w-full md:w-auto"
             >
-              <motion.a 
-                href="https://calendar.app.google/bnYW3bkW47aZiLgFA"
-                target="_blank"
-                rel="noopener noreferrer"
+              <motion.button 
+                onClick={() => {
+                  openContactForm();
+                  sendGTMEvent({
+                    event: 'cta_click',
+                    cta_location: 'cta_section',
+                    cta_text: t('button'),
+                    destination: 'contact_form'
+                  });
+                }}
                 whileHover={{ scale: 1.05, boxShadow: '0 0 50px rgba(53, 75, 181, 0.3)' }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center justify-center gap-6 md:gap-8 px-10 py-6 md:px-12 md:py-6 bg-white text-black font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-sm md:text-base hover:bg-[#354BB5] hover:text-white transition-all duration-700 rounded-sm relative overflow-hidden group shadow-2xl w-full md:w-auto"
@@ -81,7 +90,7 @@ export const CTASection: React.FC = () => {
                 <span className="relative z-10">{t('button')}</span>
                 <span className="relative z-10 text-xl md:text-2xl transition-transform duration-500 group-hover:translate-x-2">→</span>
                 <div className="absolute inset-0 bg-[#354BB5] translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[0.16, 1, 0.3, 1]" />
-              </motion.a>
+              </motion.button>
             </motion.div>
 
             {/* SECONDARY CTAs */}
@@ -97,6 +106,12 @@ export const CTASection: React.FC = () => {
                 href="https://matteoarnaboldi.substack.com/" 
                 target="_blank" 
                 rel="noopener noreferrer"
+                onClick={() => sendGTMEvent({
+                  event: 'cta_click',
+                  cta_location: 'cta_section',
+                  cta_text: 'AI Espresso',
+                  destination: 'substack'
+                })}
                 whileHover={{ y: -8, scale: 1.01 }}
                 className="group relative flex flex-col items-start p-8 md:p-10 rounded-sm overflow-hidden border border-white/5 bg-white/[0.01] transition-all duration-700 hover:border-[#FF6B00]/30 hover:bg-white/[0.03]"
               >
@@ -117,6 +132,12 @@ export const CTASection: React.FC = () => {
                 href="https://www.linkedin.com/in/matteo-arnaboldi/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BoRRGqgZpQo6xNgppmNPy4Q%3D%3D" 
                 target="_blank" 
                 rel="noopener noreferrer"
+                onClick={() => sendGTMEvent({
+                  event: 'cta_click',
+                  cta_location: 'cta_section',
+                  cta_text: 'LinkedIn',
+                  destination: 'linkedin'
+                })}
                 whileHover={{ y: -8, scale: 1.01 }}
                 className="group relative flex flex-col items-start p-8 md:p-10 rounded-sm overflow-hidden border border-white/5 bg-white/[0.01] transition-all duration-700 hover:border-accent/30 hover:bg-white/[0.03]"
               >
